@@ -13,18 +13,13 @@ document.getElementById("toevoegen").onclick = function () {
     }
     if (verkeerdeElementen.length === 0)
     {
-
+        voegProfielToe();
     }
-    if (nummerInput.checkValidity()) {
-        nummerFout.style.display = "";
-        leesUser(nummerInput.value);
-    } else {
-        nummerFout.style.display = "block";
-    }
+   
 };
 
-async function leesUser(id) {
-    const response = await fetch(`https://reqres.in/api/users/${id}`);
+async function voegProfielToe() {
+   /*  const response = await fetch(`https://reqres.in/api/users/${id}`);
     const nietGevondenDiv = document.getElementById("nietGevonden");
     if (response.ok) {
         const user = await response.json();
@@ -36,5 +31,5 @@ async function leesUser(id) {
         nietGevondenDiv.style.display = "";
     } else {
         nietGevondenDiv.style.display = "block";
-    }
+    } */
 }
