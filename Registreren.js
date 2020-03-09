@@ -1,8 +1,20 @@
 "use strict";
 
-document.getElementById("zoeken").onclick = function () {
-    const nummerInput = document.getElementById("zoekNummer");
-    const nummerFout = document.getElementById("nummerFout");
+document.getElementById("toevoegen").onclick = function () {
+    const nickname = document.getElementById("nickname");
+    const nicknameFout = document.getElementById("nicknameFout");
+    const verkeerdeElementen=document.querySelectorAll("input:invalid");
+    for (const element of verkeerdeElementen) {
+        document.getElementById(`${element.id}Fout`).style.display = "inline";
+    }
+    const correcteElementen =document.querySelectorAll("input:valid");
+    for (const element of correcteElementen) {
+        document.getElementById(`${element.id}Fout`).style.display = "";
+    }
+    if (verkeerdeElementen.length === 0)
+    {
+
+    }
     if (nummerInput.checkValidity()) {
         nummerFout.style.display = "";
         leesUser(nummerInput.value);
