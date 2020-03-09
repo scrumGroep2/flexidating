@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <script src="#" defer></script>
+  <link rel="icon" href="#" type="image/x-icon">
+  <title>Registreren</title>
+  <link rel="stylesheet" href="#" />
+</head>
+<body>
+  <img src="banner.jpg" id="banner" alt="banner">
+  <h1>Registreren</h1>
+  
+  <form id="form" action="#" method="POST">
+    <label>
+        Familienaam:
+        <input type="text" id="fnaam" name="fnaam" maxlength="1000" required>
+    </label><br>
+    <label>
+        Voornaam:
+        <input type="text" id="vnaam" name="vnaam" maxlength="1000" required>
+    </label><br>
+    <label>
+        Geboortedatum:
+        <input type="date" id="geboorte" name="geboorte" required>
+    </label><br>
+    <label>
+        E-mail:
+        <input type="email" id="email" name="email" maxlength="1000" required>
+    </label><br>
+    <label>
+        Nickname:
+        <input type="text" id="nickname" name="nickname" maxlength="100" required>
+    </label><br>
+    <label>
+        Beroep:
+        <input type="text" id="beroep" name="beroep" maxlength="1000" required>
+    </label><br>
+    <label>Man
+        <input type="radio" id="man" name="gender" value="m" required>
+    </label>
+    <label>Vrouw
+        <input type="radio" id="vrouw" name="gender" value="v" >
+    </label>
+    <label>X
+        <input type="radio" id="ander" name="gender" value="x">
+    </label><br>
+    <!-- foto uploaden nog toe te voegen-->
+    <label>
+        Haarkleur:
+        <input type="text" id="haarkleur" name="haarkleur" maxlength="50" required>
+    </label><br>
+    <label>
+        Oogkleur:
+        <input type="text" id="oogkleur" name="oogkleur" maxlength="50" required>
+    </label><br>
+    <label>
+        Grootte (in cm):
+        <input type="number" id="grootte" name="grootte" required>
+    </label><br>
+    <label>
+        Gewicht (in kg):
+        <input type="number" id="gewicht" name="gewicht" required>
+    </label><br>
+    <label>
+        Wachtwoord:
+        <input type="password" id="wachtwoord" name="wachtwoord" required>
+    </label><br>
+    <label>
+        Herhaal wachtwoord:
+        <input type="password" id="wachtwoord" name="wachtwoord" required>
+    </label><br>
+    <button>Ik registreer mij</button>    
+  </form>
+</body>
+</html>
