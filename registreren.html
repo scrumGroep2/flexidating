@@ -14,26 +14,32 @@
   <form id="form" action="#" method="POST">
     <label>
         Familienaam:
+        <span id=fnaamFout class="fout">Verplicht</span>
         <input type="text" id="fnaam" name="fnaam" maxlength="1000" required>
     </label><br>
     <label>
         Voornaam:
+        <span id=vnaamFout class="fout">Verplicht</span>
         <input type="text" id="vnaam" name="vnaam" maxlength="1000" required>
     </label><br>
     <label>
         Geboortedatum:
+        <span id=geboorteFout class="fout">Verplicht</span>
         <input type="date" id="geboorte" name="geboorte" required>
     </label><br>
     <label>
         E-mail:
+        <span id=emailFout class="fout">Verplicht</span>
         <input type="email" id="email" name="email" maxlength="1000" required>
     </label><br>
     <label>
         Nickname:
+        <span id=nicknameFout class="fout">Verplicht</span>
         <input type="text" id="nickname" name="nickname" maxlength="100" required>
     </label><br>
     <label>
         Beroep:
+        <span id=beroepFout class="fout">Verplicht</span>
         <input type="text" id="beroep" name="beroep" maxlength="1000" required>
     </label><br>
     <label>Man
@@ -43,31 +49,38 @@
         <input type="radio" id="vrouw" name="gender" value="v" >
     </label>
     <label>X
+        <span id=genderFout class="fout">Verplicht</span>
         <input type="radio" id="ander" name="gender" value="x">
     </label><br>
     <!-- foto uploaden nog toe te voegen-->
     <label>
         Haarkleur:
+        <span id=haarkleurFout class="fout">Verplicht</span>
         <input type="text" id="haarkleur" name="haarkleur" maxlength="50" required>
     </label><br>
     <label>
         Oogkleur:
+        <span id=oogkleurFout class="fout">Verplicht</span>
         <input type="text" id="oogkleur" name="oogkleur" maxlength="50" required>
     </label><br>
     <label>
         Grootte (in cm):
+        <span id=grootteFout class="fout">Verplicht</span>
         <input type="number" id="grootte" name="grootte" required>
     </label><br>
     <label>
         Gewicht (in kg):
+        <span id=gewichtFout class="fout">Verplicht</span>
         <input type="number" id="gewicht" name="gewicht" required>
     </label><br>
     <label>
         Wachtwoord:
+        <span id=wachtwoordFout class="fout">Verplicht</span>
         <input type="password" id="wachtwoord" name="wachtwoord" required>
     </label><br>
     <label>
         Herhaal wachtwoord:
+        <span id=wachtwoordFout class="fout">Verplicht</span>
         <input type="password" id="wachtwoord" name="wachtwoord" required>
     </label><br>
     <button id="toevoegen">Ik registreer mij</button>    
