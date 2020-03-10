@@ -35,7 +35,5 @@ document.getElementById("login").onclick = function () {
         });
         
 };
-document.getElementById("register").onclick = function(){
-    window.location.href="registreren.html"
-}
+
 
