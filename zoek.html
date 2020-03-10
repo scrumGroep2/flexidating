@@ -6,9 +6,11 @@
 <link href="stylesheet.css" rel="stylesheet" />
 <script src="https://scrumserver.tenobe.org/scrum/js/prism.js"></script>
 <script src="https://scrumserver.tenobe.org/scrum/api/js/getGeoData.js"></script>
+<script src="zoek.js"></script>
 <link rel="icon" type="image/png" href="heart.ico">
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134605105-1"></script>
+
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
@@ -16,9 +18,6 @@ gtag('js', new Date());
 
 gtag('config', 'UA-134605105-1');
 </script>
-
-<link rel="stylesheet" type="text/css" href="">
-<script src=""></script>
 
 </head>
 <body>
@@ -93,16 +92,12 @@ gtag('config', 'UA-134605105-1');
                 <tr>
                     <td>Zoek profielen volgens grootte vanaf:</td>
                     <td>
-                        <label for="input3_1" class="api_demo_lbl">grootte (in cm):            </label>   
+                        <label for="input3_1" class="api_demo_lbl">grootte :            </label>   
                         <input type="text" id="input3_1"  value="170" class="api_demo_param" /><br/>
-                        <!--<label for="input3_2" class="api_demo_lbl">grootteOperator :    </label>   
-                        <input type="text" id="input3_2"  value="gt" class="api_demo_param"/><br/>-->
-                        <label for="input3_3" class="api_demo_lbl">Sorteren:            </label>
-                        <select id="input3_3">
-                        <option value="oplopend">oplopend</option>
-                        <option value="aflopend">aflopend</option>
-                        </select>   
-                        <!--<input type="text" id="input3_3"  value="grootte"  class="api_demo_param"/><br/>-->
+                        <label for="input3_2" class="hidden">grootteOperator :    </label>   
+                        <input type="text" id="input3_2"  value="gt" class="hidden"/><br/>
+                        <label for="input3_3" class="hidden">orderBy :            </label>   
+                        <input type="text" id="input3_3"  value="grootte"  class="hidden"/><br/>
                     </td>
                     <td><button class="myButton" class="myButton" type="button" id="knop3">Voer Uit</button></td>
                 </tr>
