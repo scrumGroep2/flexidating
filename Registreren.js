@@ -22,9 +22,24 @@ function resetFoutboodschappen() {
 };
 
 async function voegProfielToe() {
-    const nickname = document.getElementById("nickname").innerText;
-    const response = await fetch(`https://scrumserver.tenobe.org/scrum/api/profiel/exist.php/${nickname}`);
-    console.log(response);
+    const nickname = document.getElementById("nickname").value;
+    const nicknameData = {nickname: nickname};
+    let url="'https://scrumserver.tenobe.org/scrum/api/profiel/exists.php";
+    var request = new Request(url, {
+        method: 'POST',
+        body: JSON.stringify(nicknameData),
+        headers: new Headers({
+            'Content-Type': 'application/json'
+        })
+    });
+    
+    fetch(request)
+        .then( function (resp)  { return resp.json(); })
+        .then( function (nicknameData)  { console.log(nicknameData);  })
+        .catch(function (error) { console.log(error); });
+   /*  const response = await fetch("https://scrumserver.tenobe.org/scrum/api/profiel/exists.php",
+        { method: "POST", body: JSON.stringify(nicknameData) }); */
+  /*   console.log(response); */
    /*  const response = await fetch(`https://reqres.in/api/users/${id}`);
     const nietGevondenDiv = document.getElementById("nietGevonden");
     if (response.ok) {
