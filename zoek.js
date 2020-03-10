@@ -6,22 +6,25 @@ function changeURL(sNewRoot){
     console.log('root set to : ' + rooturl)
 }
 
-window.onload = function () {
-    toonDetails();
+window.onload = function() {
+
+
+    
     /*
     --------------------------------------
     -- knoppen voor profielen
     --------------------------------------
     */
 
-    document.getElementById('knop1').addEventListener('click', function (e) {
+    document.getElementById('knop1').onclick = function() {
         let url=rooturl+'/profiel/read.php';
         //LET OP : rooturl = https://scrumserver.tenobe.org/scrum/api
         fetch(url)
             .then(function (resp)   { return resp.json(); })
             .then(function (data)   { console.log(data);  })
             .catch(function (error) { console.log(error); });
-    });
+            
+    }
 
    /* document.getElementById('knop12').addEventListener('click', function (e) {             
         let page =  document.getElementById('input12_1').value;             
@@ -57,7 +60,10 @@ window.onload = function () {
         //LET OP : rooturl = https://scrumserver.tenobe.org/scrum/api                
         fetch(url)
             .then(function (resp)   { return resp.json(); })
-            .then(function (data)   { console.log(data);  })
+            .then(function (data)   { 
+                maakTabelResultaten(data); 
+                console.log("test"); 
+            })
             .catch(function (error) { console.log(error); });
     }); 
 
@@ -127,7 +133,7 @@ window.onload = function () {
             .then(function (resp)   { return resp.json(); })
             .then(function (data)   { console.log(data);  })
             .catch(function (error) { console.log(error); });
-            maakTabelResultaten(data);
+
     });
 
    /* document.getElementById('knop7').addEventListener('click', function (e) {  
@@ -264,26 +270,30 @@ window.onload = function () {
     });*/
 
     function maakTabelResultaten(data) {
-        const tabel = document.querySelector("resultaten")
-        tabel.style.display= "block";
-        for (const user of data) {
-            const tr = document.createElement("tr");
-            const tdNaam = document.createElement("td");
-            tdNaam.innerText = user.voornaam;
-            const tdNickname = document.createElement("td");
-            tdNickname.innerText = user.nickname;
-            const tdKnop = document.createElement("td");
-            const knop = document.createElement("button");
-            knop.innerText = "Bekijk profiel";
-            knop.setAttribute('data-id', user.id);
-            tdKnop.appendChild(knop);
-            tr.appendChild(tdNaam);
-            tr.appendChild(tdNickname);
-            tr.appendChild(tdKnop);
-            document.getElementById("resultaten").appendChild(tr);
-
-        }
-    }
+        /* const knoppen = document.querySelectorAll("myButton");
+        for (let knop of knoppen) {
+            knop.onclick = function () {
+                console.log("hallo hier zijn we") */
+            let tabelBody = document.getElementById("tabelBody");
+            // tabelBody.style.display= "inline"; 
+                for (const user of data) {
+                    const tr = document.createElement("tr");
+                    const tdNaam = document.createElement("td");
+                    tdNaam.innerText = user.voornaam;
+                    const tdNickname = document.createElement("td");
+                    tdNickname.innerText = user.nickname;
+                    const tdKnop = document.createElement("td");
+                    const knop = document.createElement("button");
+                    knop.innerText = "Bekijk profiel";
+                    knop.setAttribute('data-id', user.id);
+                    tdKnop.appendChild(knop);
+                    tr.appendChild(tdNaam);
+                    tr.appendChild(tdNickname);
+                    tr.appendChild(tdKnop);
+                    tabelBody.appendChild(tr);
+                }
+            }
+   
 
     function toonDetails() {
         const knoppen = document.querySelectorAll("#resultaten button");
@@ -309,4 +319,3 @@ window.onload = function () {
         }
     }
 }
-
