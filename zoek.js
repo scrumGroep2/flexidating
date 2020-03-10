@@ -35,7 +35,7 @@ window.onload = function () {
             .catch(function (error) { console.log(error); });
     });*/
 
-    document.getElementById('knop2').addEventListener('click', function (e) {                
+   /* document.getElementById('knop2').addEventListener('click', function (e) {                
         let profielId =  document.getElementById('input2_1').value;
 
         let url=rooturl+'/profiel/read_one.php?id='+profielId;
@@ -46,7 +46,7 @@ window.onload = function () {
             .catch(function (error) { console.log(error); });
 
 
-    });
+    });*/
 
     document.getElementById('knop3').addEventListener('click', function (e) {
         let grootte =  document.getElementById('input3_1').value;
@@ -262,3 +262,4 @@ window.onload = function () {
             .catch(function (error) { console.log(error); });
     });*/
 }
+
