@@ -8,7 +8,11 @@ document.getElementById("toevoegen").onclick = function () {
     }
 
     if (verkeerdeElementen.length === 0) {
-        voegProfielToe();
+        if (document.getElementById("wachtwoord").value != document.getElementById("wachtwoordHerhaal").value) {
+            document.getElementById("verschillendeWachtwoorden").style.display = "inline";
+        } else {
+            voegProfielToe();
+        }
     }
 
 };
@@ -21,12 +25,12 @@ function resetFoutboodschappen() {
 };
 
 async function voegProfielToe() {
-    const wachten=document.getElementById("wachten");
-    wachten.style.display="inline";
+    const wachten = document.getElementById("wachten");
+    wachten.style.display = "inline";
     const nickname = document.getElementById("nickname").value;
 
     let nicknameBestaatAl = false;
-    const response = await fetch("https://scrumserver.tenobe.org/scrum/api/profiel/search.php?nickname=" + nickname);
+    let response = await fetch("https://scrumserver.tenobe.org/scrum/api/profiel/search.php?nickname=" + nickname);
     if (response.ok) {
         const profielen = await response.json();
         if (profielen.length > 0) {
@@ -35,7 +39,7 @@ async function voegProfielToe() {
     }
 
     if (nicknameBestaatAl) {
-        document.getElementById("reedsBestaandeNickname").style.display="inline";
+        document.getElementById("reedsBestaandeNickname").style.display = "inline";
     } else {
 
         let url = "https://scrumserver.tenobe.org/scrum/api/profiel/create.php";
@@ -65,12 +69,16 @@ async function voegProfielToe() {
             })
         });
 
-        fetch(request)
-            .then(function (resp) { return resp.json(); })
-            .then(function (data) { console.log(data); })
-            .catch(function (error) { console.log(error);
-            document.getElementById("foutVerwerkenGegevens").style.display="inline" });
+        response = await fetch(request);
+        if (response.ok) {
+            const resultaat = await response.json();
+            sessionStorage.setItem("id", resultaat.id)
+            window.location.href = "profiel.html"
+        } else {
+            document.getElementById("foutVerwerkenGegevens").style.display = "inline";
+        }
+
     }
 
-     wachten.style.display="";
+    wachten.style.display = "";
 };
