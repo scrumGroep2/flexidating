@@ -4,6 +4,8 @@ body {
     color: #EB3B88;
     width: min-content;
     margin: auto;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
 h1, h2 {
@@ -56,7 +58,7 @@ button {
     background: #EB3B88;
 	border: 1px solid #C94A81;
 	padding: 5px 15px 5px 15px;
-	color: #FFCBE2;
+	color: floralwhite;
 	box-shadow: inset -1px -1px 3px #FF62A7;
 	-moz-box-shadow: inset -1px -1px 3px #FF62A7;
 	-webkit-box-shadow: inset -1px -1px 3px #FF62A7;
@@ -104,4 +106,8 @@ table {
     top: 0;
     background-color: rgb(243, 144, 188);
     color: white;
+  }
+
+  .hidden {
+      display: none;
   }
