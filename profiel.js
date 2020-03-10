@@ -4,6 +4,7 @@ console.log(id)
 if (id===null){
     document.getElementById("geenLogin").innerText="gelieven in te loggen"
 }else{
+    document.getElementById("verwijderen").disabled=false;
    leesUser();
 }
 async function leesUser(){
@@ -40,11 +41,12 @@ document.getElementById("verwijderen").onclick = function () {
                 headers: new Headers({'Content-Type': 'application/json'})
                 });
 
-    let response = fetch(request);
-    if (response.ok) {
-        sessionStorage.removeItem("id");
-        window.location.href = "home.html";
-    } else {
-        foutVerwerkenGegevens.style.display = "inline";
-    }
+    fetch(request)
+            .then( function (resp)  { sessionStorage.removeItem("id");
+            window.location.href = "home.html"; })
+            .then( function (data)  { console.log(data);  })
+            .catch(function (error) { console.log(error);
+                foutVerwerkenGegevens.style.display = "block"; });
+
+
 }
