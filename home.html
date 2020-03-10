@@ -3,7 +3,7 @@
 
 <head>
     <script src="home.js" defer></script>
-    <title>Kleuren</title>
+    <title>Home</title>
     <link rel="icon" href="" type="image/x-icon">
     <link rel="stylesheet" href="default.css">
 </head>
@@ -11,11 +11,12 @@
 <body>
 <pre>
 geef uw gebruikersnaam.
-<input class="user" type="text" required>
+<input id="user" type="text" autofocus required>
 geef uw wachtwoord.
-<input class="password" type="text" required>
+<input id="password" type="text" required>
+<button onclick="login()">Log in</button>
 klik hieronder om ter registreren.
-<button class="registreer">registreer</button>
+<button id="register">registreer</button>
 </pre>
 </body>
 </html>
