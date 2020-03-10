@@ -23,10 +23,12 @@ document.getElementById("login").onclick = function () {
         .then( function (resp)  { return resp.json(); })
         .then( function (data)  { 
             console.log(data);
-            if(data.id!==null){
+            console.log(data.id);
+            if(data.message==="Authorized"){
+                sessionStorage.setItem("id",data.id)
                 window.location.href="profiel.html"
             }
-            if (data.message="Authenticatie niet mogelijk."){
+            if (data.message==="Authenticatie niet mogelijk."){
             document.getElementById("error").innerText="vul uw gegevens in";
             } else (document.getElementById("error").innerText="foutieve inlog gegevens")
         })
