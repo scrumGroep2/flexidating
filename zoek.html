@@ -3,12 +3,27 @@
 <head>
 <meta charset="utf-8">
 <title>Date zoeken</title>
+<link href="stylesheet.css" rel="stylesheet" />
+<script src="https://scrumserver.tenobe.org/scrum/js/prism.js"></script>
+<script src="https://scrumserver.tenobe.org/scrum/api/js/getGeoData.js"></script>
+<link rel="icon" type="image/png" href="heart.ico">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-134605105-1"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-134605105-1');
+</script>
+
 <link rel="stylesheet" type="text/css" href="">
 <script src=""></script>
 
 </head>
 <body>
-        
+    <img src="banner.jpg" id="banner" alt="banner">
+      <!--  
 
     <form>
         <fieldset >
@@ -37,6 +52,122 @@
 
         </fieldset>
         <button type="button" id="zoeken" class="inputHidden">zoeken</button>
+
+    -->
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Omschrijving</th>
+                    <th>Invoerparameters</th>
+                    <th class="rb"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Alle profielen ophalen:</td>
+                    <td><br></td>
+                    <td><button class="myButton" type="button" id="knop1">Voer Uit</button></td>
+                </tr>
+          <!--      <tr>
+                    <td>Haal een pagina van alle profielen op</td>
+                    <td>
+                        <label for="input12_1" class="api_demo_lbl">pagina :         </label>    
+                        <input type="text" id="input12_1" value="1" class="api_demo_param" /><br>
+                        <label for="input12_2" class="api_demo_lbl">aantal per pagina :         </label>    
+                        <input type="text" id="input12_2" value="50" class="api_demo_param" />
+                    </td>
+                    <td><button class="myButton" class="myButton" type="button" id="knop12">Voer Uit</button></td>
+                </tr> -->
+                <tr>
+                    <td>Zoek 1 profiel op basis van de id:</td>
+                    <td>
+                        <label for="input2_1" class="api_demo_lbl">profiel id:         </label>    
+                        <input type="text" id="input2_1" value="7" class="api_demo_param" />
+                    </td>
+                    <td><button class="myButton" class="myButton" type="button" id="knop2">Voer Uit</button></td>
+                </tr>
+                <tr>
+                    <td>Zoek profielen volgens grootte vanaf:</td>
+                    <td>
+                        <label for="input3_1" class="api_demo_lbl">grootte (in cm):            </label>   
+                        <input type="text" id="input3_1"  value="170" class="api_demo_param" /><br/>
+                        <!--<label for="input3_2" class="api_demo_lbl">grootteOperator :    </label>   
+                        <input type="text" id="input3_2"  value="gt" class="api_demo_param"/><br/>-->
+                        <label for="input3_3" class="api_demo_lbl">Sorteren:            </label>
+                        <select id="input3_3">
+                        <option value="oplopend">oplopend</option>
+                        <option value="aflopend">aflopend</option>
+                        </select>   
+                        <!--<input type="text" id="input3_3"  value="grootte"  class="api_demo_param"/><br/>-->
+                    </td>
+                    <td><button class="myButton" class="myButton" type="button" id="knop3">Voer Uit</button></td>
+                </tr>
+                <tr>
+                    <td>Zoek profielen met behulp van % (deel van de naam):</td>
+                    <td>
+                        <label for="input4_1" class="api_demo_lbl">voornaam:            </label>   
+                        <input type="text" id="input4_1"  value="Dar%" class="api_demo_param"/>
+                    </td>
+                    <td><button class="myButton" type="button" id="knop4">Voer Uit</button></td>
+                </tr>
+                <tr>
+                    <td>Fuzzy zoeken naar profielen</td>
+                    <td>
+                        <label for="input13_1" class="api_demo_lbl">voornaam :</label>   
+                        <input type="text" id="input13_1"  value="Dar" class="api_demo_param"/><br>
+                        <label for="input13_2" class="api_demo_lbl">fuzzy zoeken :</label>   
+                        <input type="checkbox" id="input13_2" checked> <br>
+                    </td>
+                    <td><button class="myButton" type="button" id="knop13">Voer Uit</button></td>
+                </tr>
+                <tr>
+                    <td>Zoek profielen volgens geslacht:</td>
+                    <td>
+                        <label for="input5_1" class="api_demo_lbl">geslacht:            </label>   
+                        <select id="input5_1" class="api_demo_param_chb">
+                            <option value="%" selected="">alle geslachten</option>
+                            <option>v</option>
+                            <option>m</option>
+                            <option>x</option>
+                            <option>%</option>
+                        </select>
+                    </td>
+                    <td><button class="myButton" type="button" id="knop5">Voer Uit</button></td>
+                </tr>
+                <tr>
+                    <td>Zoek profielen (met range):</td>
+                    <td> 
+                        <label for="input11_1" class="api_demo_lbl">Minimum geboortedatum :            </label>
+                        <input type="text" id="input11_1"  value="1990-01-01"  placeholder="JJJJ-MM-DD" class="api_demo_param"/><br/>
+                        <label for="input11_2" class="api_demo_lbl">Maximum geboortedatum :            </label>
+                        <input type="text" id="input11_2"  value="1990-02-01"  placeholder="JJJJ-MM-DD" class="api_demo_param"/><br/><br/>
+                        <label for="input11_3" class="api_demo_lbl">Minimum grootte :            </label>
+                        <input type="text" id="input11_3"  value="160"  placeholder="lengte in cm" class="api_demo_param"/><br/>
+                        <label for="input11_4" class="api_demo_lbl">Maximum grootte :            </label>
+                        <input type="text" id="input11_4"  value="195"  placeholder="lengte in cm" class="api_demo_param"/><br/>
+                    </td>
+                    <td><button class="myButton" type="button" id="knop11">Voer Uit</button></td>
+                </tr>
+                <tr>
+                    <td>Zoek profielen geboren vanaf:</td>
+                    <td>
+                        <label for="input6_1" class="api_demo_lbl">geboortedatum :            </label>   
+                        <input type="text" id="input6_1"  value="1980-01-01"  placeholder="JJJJ-MM-DD" class="api_demo_param"/><br/>
+                        <label for="input6_2" class="api_demo_lbl">operator :            </label>   
+                        <select id="input6_2" class="api_demo_param_chb">
+                            <option value="st" selected="">ouder</option>
+                            <option value="gt" >jonger</option>                                     
+                            <option value="eq" >even oud</option>
+                            <option value="steq" >ouder of even oud</option>
+                            <option value="gteq" >jonger of even oud</option>
+                        </select>
+                    </td>
+                    <td><button class="myButton" type="button" id="knop6">Voer Uit</button></td>
+                </tr>
+               
+            </tbody>
+        </table>
 
 
     </form>
