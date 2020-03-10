@@ -1,0 +1,79 @@
+body {
+    background-color: floralwhite;
+    font-family: sans-serif;
+}
+
+h1 {
+    color: darkblue;
+}
+
+nav ul {
+	background-color: #EB3B88;
+	padding: 0.4em 0;
+}
+
+nav li {
+	display: inline;
+}
+
+nav li a {
+	color: white;
+	font-weight: bold;
+	padding-left: 0.5em;
+	text-decoration: none;
+	vertical-align: middle;
+}
+
+nav li a:hover {
+	color: #F7FFCC;
+}
+
+.fout {
+    display: none;
+    color: #EB3B88;
+    font-size: small;
+}
+
+.form label {
+    display: block;
+    margin-bottom: 2px;
+}
+
+.form input {
+    border: 1px solid #FFC2DC;
+    padding: 5px 8px 5px 8px;
+    box-shadow: inset 1px 1px 4px #FFD5E7;
+    -moz-box-shadow: inset 1px 1px 4px #FFD5E7;
+	-webkit-box-shadow: inset 1px 1px 4px #FFD5E7;
+	background: #FFEFF6;
+}
+
+button {
+    background: #EB3B88;
+	border: 1px solid #C94A81;
+	padding: 5px 15px 5px 15px;
+	color: #FFCBE2;
+	box-shadow: inset -1px -1px 3px #FF62A7;
+	-moz-box-shadow: inset -1px -1px 3px #FF62A7;
+	-webkit-box-shadow: inset -1px -1px 3px #FF62A7;
+	border-radius: 3px;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;	
+	font-weight: bold;
+}
+
+button:hover {
+    background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+    background-color:  #FFCBE2;
+    color:  #EB3B88;
+}
+button:active {
+    position:relative;
+    top:1px;
+}
+
+
+#wachten {
+    display: none;
+}
