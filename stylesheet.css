@@ -1,11 +1,14 @@
 body {
     background-color: floralwhite;
     font-family: sans-serif;
+    color: #EB3B88;
+    width: max-content;
 }
 
-h1 {
+h1, h2 {
     color: darkblue;
 }
+
 
 nav ul {
 	background-color: #EB3B88;
