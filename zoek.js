@@ -7,7 +7,7 @@ function changeURL(sNewRoot){
 }
 
 window.onload = function () {
-
+    toonDetails();
     /*
     --------------------------------------
     -- knoppen voor profielen
@@ -127,6 +127,7 @@ window.onload = function () {
             .then(function (resp)   { return resp.json(); })
             .then(function (data)   { console.log(data);  })
             .catch(function (error) { console.log(error); });
+            maakTabelResultaten(data);
     });
 
    /* document.getElementById('knop7').addEventListener('click', function (e) {  
@@ -261,5 +262,51 @@ window.onload = function () {
             .then( function (data)  { console.log(data);  })
             .catch(function (error) { console.log(error); });
     });*/
+
+    function maakTabelResultaten(data) {
+        const tabel = document.querySelector("resultaten")
+        tabel.style.display= "block";
+        for (const user of data) {
+            const tr = document.createElement("tr");
+            const tdNaam = document.createElement("td");
+            tdNaam.innerText = user.voornaam;
+            const tdNickname = document.createElement("td");
+            tdNickname.innerText = user.nickname;
+            const tdKnop = document.createElement("td");
+            const knop = document.createElement("button");
+            knop.innerText = "Bekijk profiel";
+            knop.setAttribute('data-id', user.id);
+            tdKnop.appendChild(knop);
+            tr.appendChild(tdNaam);
+            tr.appendChild(tdNickname);
+            tr.appendChild(tdKnop);
+            document.getElementById("resultaten").appendChild(tr);
+
+        }
+    }
+
+    function toonDetails() {
+        const knoppen = document.querySelectorAll("#resultaten button");
+        for (let knop of knoppen) {
+            knop.onclick = function() {
+                const profielId = this.dataset.id;
+                let url=rooturl+'/profiel/read_one.php?id='+profielId;
+                //LET OP : rooturl = https://scrumserver.tenobe.org/scrum/api
+                fetch(url)
+                    .then(function (resp)   { return resp.json(); })
+                    .then(function (data)   { console.log(data);  })
+                    .catch(function (error) { console.log(error); });
+                const tabelDetails = document.createElement(table);
+                tabelDetails.class = "profielDetails";
+                document.getElementById("resultaten").insertRow(this.parentElement.rowIndex + 1);
+                this.nextElementSibling.appendChild(tabelDetails);
+                const trVerjaardag = document.createElement(tr);
+                const tdVerjaardagLabel = trVerjaardag.insertCell();
+                tdVerjaardagLabel.innerText = "verjaardag";
+                const tdVerjaardagData = trVerjaardag.insertCell();
+                tdVerjaardagData.innerText = data.geboortedatum;
+            }
+        }
+    }
 }
 
