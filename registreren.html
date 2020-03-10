@@ -48,7 +48,7 @@
         <input type="text" id="beroep" name="beroep" maxlength="1000" required>
     </label><br>
     <label>Man
-        <input type="radio" id="man" name="gender" value="m" required>
+        <input type="radio" id="man" name="gender" value="m" checked>
     </label>
     <label>Vrouw
         <input type="radio" id="vrouw" name="gender" value="v" >
@@ -56,8 +56,7 @@
     <label>X
         <input type="radio" id="ander" name="gender" value="x">
     </label>
-    <span id=genderFout class="fout">Verplicht</span>
-    <!-- foto uploaden nog toe te voegen-->
+        <!-- foto uploaden nog toe te voegen-->
     <label>
         Haarkleur:
         <span id=haarkleurFout class="fout">Verplicht</span>
@@ -86,13 +85,14 @@
     <label>
         Herhaal wachtwoord:
         <span id=wachtwoord1Fout class="fout">Verplicht</span>
-        <input type="password" id="wachtwoord1" name="wachtwoord1" required>
+        <input type="password" id="wachtwoordHerhaal" name="wachtwoordHerhaal" required>
     </label><br>
     
     <button id="toevoegen">Ik registreer mij</button>    
     <div id="wachten">Even wachten aub.</div>
     <div id="reedsBestaandeNickname" class="fout">Nickname is reeds in gebruik. Kies een andere.</div>
     <div id="foutVerwerkenGegevens" class="fout">Er is een probleem opgetreden bij het verwerken van de gegevens</div>
+    <div id="verschillendeWachtwoorden" class="fout">Vul 2 maal hetzelfde wachtwoord in.</div>
 </div>
 </body>
 </html>

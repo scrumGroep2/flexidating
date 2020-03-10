@@ -8,7 +8,11 @@ document.getElementById("toevoegen").onclick = function () {
     }
 
     if (verkeerdeElementen.length === 0) {
-        voegProfielToe();
+        if (document.getElementById("wachtwoord").value != document.getElementById("wachtwoordHerhaal").value) {
+            document.getElementById("verschillendeWachtwoorden").style.display = "inline";
+        } else {
+            voegProfielToe();
+        }
     }
 
 };
@@ -21,8 +25,8 @@ function resetFoutboodschappen() {
 };
 
 async function voegProfielToe() {
-    const wachten=document.getElementById("wachten");
-    wachten.style.display="inline";
+    const wachten = document.getElementById("wachten");
+    wachten.style.display = "inline";
     const nickname = document.getElementById("nickname").value;
 
     let nicknameBestaatAl = false;
@@ -35,7 +39,7 @@ async function voegProfielToe() {
     }
 
     if (nicknameBestaatAl) {
-        document.getElementById("reedsBestaandeNickname").style.display="inline";
+        document.getElementById("reedsBestaandeNickname").style.display = "inline";
     } else {
 
         let url = "https://scrumserver.tenobe.org/scrum/api/profiel/create.php";
@@ -68,13 +72,13 @@ async function voegProfielToe() {
         response = await fetch(request);
         if (response.ok) {
             const resultaat = await response.json();
-            sessionStorage.setItem("id",resultaat.id)
-            window.location.href="profiel.html"
+            sessionStorage.setItem("id", resultaat.id)
+            window.location.href = "profiel.html"
         } else {
-            document.getElementById("foutVerwerkenGegevens").style.display="inline";
+            document.getElementById("foutVerwerkenGegevens").style.display = "inline";
         }
- 
+
     }
 
-     wachten.style.display="";
+    wachten.style.display = "";
 };
