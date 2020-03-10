@@ -2,7 +2,10 @@ body {
     background-color: floralwhite;
     font-family: sans-serif;
     color: #EB3B88;
-    width: max-content;
+    width: min-content;
+    margin: auto;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
 h1, h2 {
@@ -55,7 +58,7 @@ button {
     background: #EB3B88;
 	border: 1px solid #C94A81;
 	padding: 5px 15px 5px 15px;
-	color: #FFCBE2;
+	color: floralwhite;
 	box-shadow: inset -1px -1px 3px #FF62A7;
 	-moz-box-shadow: inset -1px -1px 3px #FF62A7;
 	-webkit-box-shadow: inset -1px -1px 3px #FF62A7;
@@ -71,6 +74,7 @@ button:hover {
     background-color:  #FFCBE2;
     color:  #EB3B88;
 }
+
 button:active {
     position:relative;
     top:1px;
@@ -80,3 +84,30 @@ button:active {
 #wachten {
     display: none;
 }
+
+table {
+    font-family: Verdana;
+    font-size: 14px;
+    border-collapse: collapse;
+  }
+  
+  td, th {
+    padding: 10px;
+    text-align: left;
+    margin: 0;
+  }
+  
+  tbody tr:nth-child(2n){
+    background-color: rgb(255, 236, 244);
+  }
+  
+  th {
+    position: sticky;
+    top: 0;
+    background-color: rgb(243, 144, 188);
+    color: white;
+  }
+
+  .hidden {
+      display: none;
+  }
