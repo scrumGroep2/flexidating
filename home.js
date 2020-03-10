@@ -1,5 +1,6 @@
 "use strict";
-let login = function () {  
+document.getElementById("login").onclick = function () {  
+    document.getElementById("error").innerText=""
     let nickname =  document.getElementById("user").value; 
     let wachtwoord =  document.getElementById("password").value;
     console.log(nickname)
@@ -20,9 +21,19 @@ let login = function () {
     
     fetch(request)
         .then( function (resp)  { return resp.json(); })
-        .then( function (data)  { console.log(data);  })
-        .catch(function (error) { console.log(error); });
-    document.getElementById("error").innerText=error.innerText
+        .then( function (data)  { 
+            console.log(data);
+            if(data.id!==null){
+                window.location.href="profiel.html"
+            }
+            if (data.message="Authenticatie niet mogelijk."){
+            document.getElementById("error").innerText="vul uw gegevens in";
+            } else (document.getElementById("error").innerText="foutieve inlog gegevens")
+        })
+        .catch(function (error) { 
+            console.log(error); 
+        });
+        
 };
 document.getElementById("register").onclick = function(){
     window.location.href="registreren.html"
