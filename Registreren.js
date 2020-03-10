@@ -4,7 +4,7 @@ document.getElementById("toevoegen").onclick = function () {
     resetFoutboodschappen();
     const verkeerdeElementen = document.querySelectorAll("input:invalid");
     for (const element of verkeerdeElementen) {
-        document.getElementById(`${element.id}Fout`).style.display = "inline";
+        document.getElementById(`${element.name}Fout`).style.display = "inline";
     }
 
     if (verkeerdeElementen.length === 0) {
