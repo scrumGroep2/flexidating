@@ -30,7 +30,7 @@ document.getElementById("login").onclick = function () {
             }
             if (data.message==="Authenticatie niet mogelijk."){
             document.getElementById("error").innerText="vul uw gegevens in";
-            } else (document.getElementById("error").innerText="foutieve inlog gegevens")
+            } else {document.getElementById("error").innerText="foutieve inlog gegevens"}
         })
         .catch(function (error) { 
             console.log(error); 
