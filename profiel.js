@@ -4,7 +4,7 @@ console.log(id)
 if (id===null){
     document.getElementById("geenLogin").innerText="gelieven in te loggen"
 }else{
-    async function(){
-        
+    async function leesUser(){
+        const response = await fetch()
     }
 }
