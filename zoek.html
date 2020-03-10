@@ -29,35 +29,9 @@ gtag('config', 'UA-134605105-1');
             <li><a href="zoek.html">Zoek een date</a></li>
         </ul>
     </nav>
-      <!--  
-
-    <form>
-        <fieldset >
-            <h2>Persoonlijke gegevens</h2>
-            <div><img id="gezochtefoto"></div>
-            <p><label>Voornaam:     <a id="voornaam"></a>     <span class="inputHidden">  <input id="voornaamInput">       <input type="checkbox" id="voornaamBool">   <span>Privaat</span> </span></label></p>
-            <p><label>Familienaam:  <a id="familienaam"></a>  <span class="inputHidden">  <input id="familienaamInput">    <input type="checkbox" id="familienaamBool"><span>Privaat</span> </span></label></p>
-            <p><label>Nickname:     <a id="nickname"></a>     <span class="inputHidden">  <input id="nicknameInput">                                             </span></label> </p>
-            <p><label>Geslacht:     <a id="sexe"></a>         <span class="inputHidden">  <input id="sexeInput">           <input type="checkbox" id="sexeBool" >      <span>Privaat</span> </span> </label></p>
-            <p><label>Beroep:       <a id="beroep"></a>       <span class="inputHidden">  <input id="beroepInput">         <input type="checkbox" id="beroepBool" >    <span>Privaat</span> </span></label></p>
-            <p><label>Geboortedatum:<a id="geboortedatum"></a><span class="inputHidden">  <input id="geboortedatumInput">  <input type="checkbox" id="geboortedatumBool"><span>Privaat</span> </span></label></p>
-            <p><label>Email:        <a id="email"></a>        <span class="inputHidden">  <input id="emailInput">          <input type="checkbox" id="emailBool">     <span>Privaat</span> </span></label></p>
 
 
-        </fieldset>
-        <fieldset >
-            <h2>Fysieke kenmerken</h2>
-            <p><label>Haarkleur:    <a id="haarkleur"></a>      <span class="inputHidden">  <input id="haarkleurInput">     <input type="checkbox" id="haarkleurBool"><span>Privaat</span> </span></label></p>
-            <p><label>Oogkleur:     <a id="oogkleur"></a>       <span class="inputHidden">  <input id="oogkleurInput">      <input type="checkbox" id="oogkleurBool"><span>Privaat</span> </span></label></p>
-            <p><label>Grootte:      <a id="grootte"></a>        <span class="inputHidden">  <input id="grootteInput">       <input type="checkbox" id="grootteBool"><span>Privaat</span> </span></label></p>
-            <p><label>Gewicht:      <a id="gewicht"></a>        <span class="inputHidden">  <input id="gewichtInput">       <input type="checkbox" id="gewichtBool"><span>Privaat</span> </span></label></p>
-
-        </fieldset>
-        <button type="button" id="zoeken" class="inputHidden">zoeken</button>
-
-    -->
-
-        <table>
+        <table id="zoekfuncties">
             <thead>
                 <tr>
                     <th>Omschrijving</th>
@@ -71,7 +45,7 @@ gtag('config', 'UA-134605105-1');
                     <td><br></td>
                     <td><button class="myButton" type="button" id="knop1">Voer Uit</button></td>
                 </tr>
-          <!--      <tr>
+                <!--<tr>
                     <td>Haal een pagina van alle profielen op</td>
                     <td>
                         <label for="input12_1" class="api_demo_lbl">pagina :         </label>    
@@ -80,24 +54,24 @@ gtag('config', 'UA-134605105-1');
                         <input type="text" id="input12_2" value="50" class="api_demo_param" />
                     </td>
                     <td><button class="myButton" class="myButton" type="button" id="knop12">Voer Uit</button></td>
-                </tr> -->
-                <tr>
+                </tr>-->
+                <!--<tr>
                     <td>Zoek 1 profiel op basis van de id:</td>
                     <td>
                         <label for="input2_1" class="api_demo_lbl">profiel id:         </label>    
                         <input type="text" id="input2_1" value="7" class="api_demo_param" />
                     </td>
                     <td><button class="myButton" class="myButton" type="button" id="knop2">Voer Uit</button></td>
-                </tr>
+                </tr>-->
                 <tr>
                     <td>Zoek profielen volgens grootte vanaf:</td>
                     <td>
                         <label for="input3_1" class="api_demo_lbl">grootte :            </label>   
-                        <input type="text" id="input3_1"  value="170" class="api_demo_param" /><br/>
+                        <input type="text" id="input3_1"  value="170" class="api_demo_param" />
                         <label for="input3_2" class="hidden">grootteOperator :    </label>   
-                        <input type="text" id="input3_2"  value="gt" class="hidden"/><br/>
+                        <input type="text" id="input3_2"  value="gt" class="hidden"/>
                         <label for="input3_3" class="hidden">orderBy :            </label>   
-                        <input type="text" id="input3_3"  value="grootte"  class="hidden"/><br/>
+                        <input type="text" id="input3_3"  value="grootte"  class="hidden"/>
                     </td>
                     <td><button class="myButton" class="myButton" type="button" id="knop3">Voer Uit</button></td>
                 </tr>
@@ -110,7 +84,7 @@ gtag('config', 'UA-134605105-1');
                     <td><button class="myButton" type="button" id="knop4">Voer Uit</button></td>
                 </tr>
                 <tr>
-                    <td>Fuzzy zoeken naar profielen</td>
+                    <td>Fuzzy zoeken naar profielen:</td>
                     <td>
                         <label for="input13_1" class="api_demo_lbl">voornaam :</label>   
                         <input type="text" id="input13_1"  value="Dar" class="api_demo_param"/><br>
@@ -169,5 +143,25 @@ gtag('config', 'UA-134605105-1');
 
 
     </form>
+
+    <br>
+
+    <table id="resultaten" class="hidden">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nickname</th>
+            <th>Voornaam</th>
+            <th>Detail</th>
+          </tr>
+        </thead>
+        <tbody id="tabelBody">
+    
+        </tbody>
+    </table>
+
+    <br>
+
+    <button class="myButton" type="button" id="nieuweZoek">Nieuwe zoekopdracht</button>
 </body>
 </html>
