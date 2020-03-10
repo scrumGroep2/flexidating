@@ -5,13 +5,20 @@
   <script src="registreren.js" defer></script>
   <link rel="icon" href="#" type="image/x-icon">
   <title>Registreren</title>
-  <!-- <link rel="stylesheet" href="#" /> -->
+  <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Mijn profiel</a></li>
+            <li><a href="#">Over Flexidating</a></li>
+        </ul>
+    </nav>
   <!-- <img src="banner.jpg" id="banner" alt="banner"> -->
   <h1>Registreren</h1>
   
-  <!-- <form id="form"  method="POST"> -->
+  <div class="form">
     <label>
         Familienaam:
         <span id=fnaamFout class="fout">Verplicht</span>
@@ -49,9 +56,9 @@
         <input type="radio" id="vrouw" name="gender" value="v" >
     </label>
     <label>X
-        <span id=genderFout class="fout">Verplicht</span>
         <input type="radio" id="ander" name="gender" value="x">
-    </label><br>
+    </label>
+    <span id=genderFout class="fout">Verplicht</span>
     <!-- foto uploaden nog toe te voegen-->
     <label>
         Haarkleur:
@@ -83,10 +90,11 @@
         <span id=wachtwoord1Fout class="fout">Verplicht</span>
         <input type="password" id="wachtwoord1" name="wachtwoord1" required>
     </label><br>
+    
     <button id="toevoegen">Ik registreer mij</button>    
     <div id="wachten">Even wachten aub.</div>
     <div id="reedsBestaandeNickname" class="fout">Nickname is reeds in gebruik. Kies een andere.</div>
     <div id="foutVerwerkenGegevens" class="fout">Er is een probleem opgetreden bij het verwerken van de gegevens</div>
-  <!-- </form> -->
+</div>
 </body>
 </html>
