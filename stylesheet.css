@@ -113,19 +113,22 @@ table {
       display: none;
   }
 #coin {
-	height:30%;
-    width: 30%;
+	height:35%;
+    width: 35%;
+    margin: 0%;
+    margin-block: 0%;
 }
 
 #currency{
-    width: 4%;
-    height: 4%;
-    float: right;
+    width: 5%;
+    height: 5%;
     margin: 0%;
 }
 
-.header{
+.header {
     font-weight: bold;
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
 
 dl {
