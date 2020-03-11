@@ -171,3 +171,8 @@ dl {
     color: #EB3B88;
     font-weight: bold;
   }
+
+  .form p{
+    margin-block-start: 0px;
+    margin: 0%;
+  }

@@ -24,8 +24,10 @@ document.getElementById("login").onclick = function () {
         .then( function (data)  { 
             console.log(data);
             console.log(data.id);
+            console.log(nickname)
             if(data.message==="Authorized"){
-                sessionStorage.setItem("id",data.id)
+                sessionStorage.setItem("id",data.id);
+                sessionStorage.setItem("nickname",nickname);
                 window.location.href="profiel.html"
             }
             if (data.message==="Authenticatie niet mogelijk."){
@@ -44,4 +46,32 @@ document.getElementById("register").onclick = function() {
 
 document.getElementById("logout").onclick=function(){
     sessionStorage.removeItem("id")
+    sessionStorage.removeItem("nickname")
+}
+window.onload = function() {
+if (sessionStorage.getItem("id")===null){
+    let loggedin=document.getElementById("loggedin");
+    loggedin.classList.remove("hidden")
+}
+if (sessionStorage.getItem("id")!==null){
+    let loggedin=document.getElementById("loggedin");
+    loggedin.classList.add("hidden");
+    let homeLog=document.getElementById("homeLog");
+    let span = document.createElement("span");
+    span.innerText=`uw bent ingelogt als ${sessionStorage.getItem("nickname")}`;
+    homeLog.appendChild(span);
+    console.log(span)
+    console.log(homeLog)
+    let p = document.createElement("p")
+    p.innerText=`bent u dit niet? klik `
+    homeLog.appendChild(p)
+    let link = document.createElement("a")
+    link.href="home.html"
+    link.innerText="hier"
+    p.appendChild(link)
+    link.onclick=function() {
+    sessionStorage.removeItem("id")
+    sessionStorage.removeItem("nickname")
+    }
+}
 }

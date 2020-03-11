@@ -215,6 +215,7 @@ window.onload = function() {
 
 document.getElementById("logout").onclick=function(){
     sessionStorage.removeItem("id")
+    sessionStorage.removeItem("nickname")
     document.getElementById("geenLogin").innerText="inloggen"
     let buttons = document.querySelectorAll("button");
     for(let i=0;i<=buttons.length-1;i++) {

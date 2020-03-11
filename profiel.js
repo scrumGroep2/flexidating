@@ -55,4 +55,5 @@ document.getElementById("verwijderen").onclick = function () {
 
 document.getElementById("logout").onclick=function(){
     sessionStorage.removeItem("id")
+    sessionStorage.removeItem("nickname")
 }
