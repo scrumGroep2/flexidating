@@ -10,6 +10,7 @@ function changeURL(sNewRoot){
 window.onload = function() {
 
     if(sessionStorage.getItem("id")===null){
+        document.getElementById("geenLogin").innerText="inloggen"
         let buttons = document.querySelectorAll("button");
         for(let i=0;i<=buttons.length-1;i++) {
             buttons[i].disabled=true
@@ -204,7 +205,5 @@ function sterrenbeeld(dag,maand)
     return (dag <= sterrenbeelden[maand-1][1]) ? sterrenbeelden[maand-1][0] : sterrenbeelden[maand][0];
 }
 
-document.getElementById("test").onclick=function() {
-    document.getElementById("ster").innerText=sterrenbeeld(document.getElementById("dag").value,document.getElementById("maand").value);
-}
+
 
