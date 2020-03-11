@@ -8,6 +8,21 @@ function changeURL(sNewRoot){
 
 window.onload = function() {
 
+<<<<<<< HEAD
+=======
+    if(sessionStorage.getItem("id")===null){
+        document.getElementById("geenLogin").innerText="inloggen"
+        let buttons = document.querySelectorAll("button");
+        for(let i=0;i<=buttons.length-1;i++) {
+            buttons[i].disabled=true
+        }
+    
+    }else{let buttons = document.querySelectorAll("button");
+    for(let i=0;i<=buttons.length-1;i++) {
+        buttons[i].disabled=false
+    }}
+
+>>>>>>> 22648491b6fb3f7aacb07357f4e3d55223ca8e12
 
     
     /*
