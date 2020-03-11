@@ -16,45 +16,53 @@
             <li><a href="profiel.html">Mijn profiel</a></li>
             <li><a href="zoek.html">Zoek een date</a></li>
         </ul>
-        
     </nav>
-    <div class="header">
+     <!--zoek passende foto voor de lovecoins,span komt van javascript-->
+     <p id="currency"><img id="coin" src="" alt=""> <span id="lovecoins"></span></p>
+    <div class="header clearfix">
         <span id="geenLogin"></span>
-        <!--zoek passende foto voor de lovecoins,span komt van javascript-->
-        <p id="currency"><img id="coin" src="" alt=""> <span id="lovecoins"></span></p>
         <!--nickname van database-->
         <p id="username"></p>
         <!--foto van gebruiker-->
         <p><img id="foto" src="" alt=""></p>
     </div>
-    <div class="information">
+    <div class="information clearfix">
+        <dl class="clearfix">
         <!--voor en achternaam tesamen via javascript-->
-        <p id="name"></p>
+        <dt>Naam</dt>
+        <dd id="name"></dd>
         <!--geboortedatum van user-->
-        <p id="birthday"></p>
+        <dt>Geboortedatum</dt>
+        <dd id="birthday"></dd>
         <!-- e-mail van user-->
-        <p id="mail"></p>
+        <dt>e-mail</dt>
+        <dd id="mail"></dd>
         <!--beroep van user-->
-        <p id="job"></p>
+        <dt>Beroep</dt>
+        <dd id="job"></dd>
         <!--geslacht user-->
-        <p id="sex"></p>
+        <dt>Geslacht</dt>
+        <dd id="sex"></dd>
         <!--haarkleur-->
-        <p id="hair"></p>
+        <dt>Haarkleur</dt>
+        <dd id="hair"></dd>
         <!--oogkleur-->
-        <p id="eye"></p>
+        <dt>Oogkleur</dt>
+        <dd id="eye"></dd>
         <!--hoogte-->
-        <p id="height"></p>
+        <dt>Lengte</dt>
+        <dd id="height"></dd>
         <!--gewicht-->
-        <p id="weight"></p>
+        <dt>Gewicht</dt>
+        <dd id="weight"></dd>
+        </dl>
     </div>
     <!--dit is voor later-->
-    <div class="change">
-        als u informatie wilt wijzigen klik op de knop hieronder.
-        <button>aanpassen</button>
+    <div class="change clearfix">
+        <button>profiel wijzigen</button>
     </div>
-    <div class="verwijderen">
-        als u uw profiel wil verwijderen klik op de knop hieronder.
-        <button id="verwijderen" disabled>verwijderen</button>
+    <div class="verwijderen clearfix">
+        <button id="verwijderen" disabled>profiel verwijderen</button>
     </div>
     <div class="hidden" class="change">
         <!--of met allemaal inputs of selecteren wat te veranderen.-->

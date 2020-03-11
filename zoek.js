@@ -102,8 +102,6 @@ window.onload = function() {
         let tabelBody = document.getElementById("tabelBody");
         for (const user of data) {
             const tr = document.createElement("tr");
-            const tdNaam = document.createElement("td");
-            tdNaam.innerText = user.voornaam;
             const tdNickname = document.createElement("td");
             tdNickname.innerText = user.nickname;
             const tdKnop = document.createElement("td");
@@ -112,7 +110,6 @@ window.onload = function() {
             knop.setAttribute('data-id', user.id);
             tdKnop.appendChild(knop);
             tr.appendChild(tdNickname);
-            tr.appendChild(tdNaam);
             tr.appendChild(tdKnop);
             tabelBody.appendChild(tr);
         }
@@ -134,6 +131,7 @@ window.onload = function() {
         maakTabelResultaten(data);
         verbergZoekfuncties();
         toonKnopNieuweZoekopdracht();
+        naarDetail();
     }
 
     document.getElementById("nieuweZoek").onclick = function() {
@@ -150,6 +148,16 @@ window.onload = function() {
         const tabelBody = document.getElementById("tabelBody");
         while (tabelBody.lastElementChild !== null) {
             tabelBody.lastElementChild.remove();
+        }
+    }
+
+    function naarDetail() {
+        const knoppen = document.querySelectorAll("#resultaten button"); 
+        for (const knop of knoppen) {
+            knop.onclick = function () {
+                sessionStorage.setItem("resultaatId", this.dataset.id);
+                window.open("zoekdetail.html");
+            }
         }
     }
 }

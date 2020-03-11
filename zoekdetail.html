@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Zoekprofiel detail</title>
+<link href="stylesheet.css" rel="stylesheet" />
+<script src="https://scrumserver.tenobe.org/scrum/js/prism.js"></script>
+<script src="https://scrumserver.tenobe.org/scrum/api/js/getGeoData.js"></script>
+<script src="zoekdetail.js" defer></script>
+<link rel="icon" type="image/png" href="heart.ico">
+
+</head>
+
+<body>
+    <img src="banner.jpg" id="banner" alt="banner">
+    <nav>
+        <ul>
+            <li><a href="#" id="sluit">Detail sluiten</a></li>
+            <li><a href="#" id="toevoegen">Toevoegen aan favorieten</a></li>
+            <li><a href="#" id="bericht versturen"></a>Bericht versturen</li>
+        </ul>
+        
+    </nav>
+    <div class="header">
+        <span id="geenLogin"></span>
+        
+        <p id="nickname"></p>
+        
+        <p><img id="foto" src="" alt=""></p>
+    </div>
+
+    <div class="information">
+        <dl class="clearfix">
+            <!--beroep-->
+            <dt>Beroep</dt>
+            <dd id="job"></dd>
+            <!--geslacht-->
+            <dt>Geslacht</dt>
+            <dd id="sex"></dd>
+            <!--haarkleur-->
+            <dt>Haarkleur</dt>
+            <dd id="hair"></dd>
+            <!--oogkleur-->
+            <dt>Oogkleur</dt>
+            <dd id="eye"></dd>
+            <!--hoogte-->
+            <dt>Lengte</dt>
+            <dd id="height"></dd> <span> cm</span>
+            <!--gewicht-->
+            <dt>Gewicht</dt>
+            <dd id="weight"></dd> <span> kg</span>
+            </dl>
+    </div>
+
+</body>
+</html>
