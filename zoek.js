@@ -128,12 +128,20 @@ window.onload = function() {
             const tdNickname = document.createElement("td");
             tdNickname.innerText = user.nickname;
             const tdSterrenbeeld = document.createElement("td");
-            const dagAlsString = user.geboortedatum.substring(8);
-            const dag = parseInt(dagAlsString);
-            const maandAlsString = user.geboortedatum.substring(5, 7);
-            const maand = parseInt(maandAlsString);
-            console.log(user.geboortedatum);
-            tdSterrenbeeld.innerText = sterrenbeeld(dag, maand);
+            if (geboortedatumIsValid(user.geboortedatum)) {
+                const dagAlsString = user.geboortedatum.substring(8);
+                const dag = parseInt(dagAlsString);
+                const maandAlsString = user.geboortedatum.substring(5, 7);
+                const maand = parseInt(maandAlsString);
+                const imgSterrenbeeld = document.createElement("img");
+                imgSterrenbeeld.src = `sterrenbeelden/${sterrenbeeld(dag, maand)}.jpg`;
+                imgSterrenbeeld.width = "100";
+                imgSterrenbeeld.height = "100";
+                tdSterrenbeeld.appendChild(imgSterrenbeeld);
+            } else {
+                tdSterrenbeeld.innerText = "sterrenbeeld niet beschikbaar";
+            }
+            
             const tdKnop = document.createElement("td");
             const knop = document.createElement("button");
             knop.innerText = "Bekijk profiel";
@@ -144,6 +152,16 @@ window.onload = function() {
             tr.appendChild(tdKnop);
             tabelBody.appendChild(tr);
         }
+    }
+
+    function geboortedatumIsValid(geboortedatum) {
+        const dagAlsString = geboortedatum.substring(8);
+        const maandAlsString = geboortedatum.substring(5, 7);
+        if (parseInt(dagAlsString) <= 31 && parseInt(dagAlsString) >= 1 
+            && parseInt(maandAlsString) <= 12 && parseInt(maandAlsString) >= 1) {
+                return true;
+            } 
+        return false;
     }
 
     function verbergZoekfuncties() {
@@ -193,7 +211,7 @@ window.onload = function() {
         ['Vissen',20],
         ['Ram',20],
         ['Stier',20],
-        ['Tweeling',20],
+        ['Tweelingen',20],
         ['Kreeft',22],
         ['Leeuw',22],
         ['Maagd',22],
