@@ -2,6 +2,7 @@
 let id = sessionStorage.getItem("id")
 console.log(id)
 if (id===null){
+    window.location.replace("home.html")
     document.getElementById("geenLogin").innerText="gelieven in te loggen"
 }else{
     document.getElementById("geenLogin").innerText=""

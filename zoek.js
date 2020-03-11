@@ -9,6 +9,7 @@ function changeURL(sNewRoot){
 window.onload = function() {
 
     if(sessionStorage.getItem("id")===null){
+        window.location.replace("home.html")
         document.getElementById("geenLogin").innerText="inloggen"
         let buttons = document.querySelectorAll("button");
         for(let i=0;i<=buttons.length-1;i++) {
@@ -215,8 +216,8 @@ window.onload = function() {
 document.getElementById("logout").onclick=function(){
     sessionStorage.removeItem("id")
     document.getElementById("geenLogin").innerText="inloggen"
-        let buttons = document.querySelectorAll("button");
-        for(let i=0;i<=buttons.length-1;i++) {
-            buttons[i].disabled=true
-        }
+    let buttons = document.querySelectorAll("button");
+    for(let i=0;i<=buttons.length-1;i++) {
+        buttons[i].disabled=true
+    }
 }
