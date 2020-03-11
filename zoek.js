@@ -6,7 +6,19 @@ function changeURL(sNewRoot){
     console.log('root set to : ' + rooturl)
 }
 
+
 window.onload = function() {
+
+    if(sessionStorage.getItem("id")===null){
+        let buttons = document.querySelectorAll("button");
+        for(let i=0;i<=buttons.length-1;i++) {
+            buttons[i].disabled=true
+        }
+    
+    }else{let buttons = document.querySelectorAll("button");
+    for(let i=0;i<=buttons.length-1;i++) {
+        buttons[i].disabled=false
+    }}
 
 
     
@@ -160,4 +172,12 @@ window.onload = function() {
             }
         }
     }
+}
+
+document.getElementById("logout").onclick=function(){
+    sessionStorage.removeItem("id")
+    let buttons = document.querySelectorAll("button");
+        for(let i=0;i<=buttons.length-1;i++) {
+            buttons[i].disabled=true
+        }
 }
