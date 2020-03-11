@@ -115,8 +115,15 @@ table {
 	height:2%;
 	width: 2%;
 }
-#currency {
-	
+.header {
+    display: block;
+    width: 100px;
+    float: left;
+    border: 10px;
+}
+
+.information {
+    display: block;
 }
 
 
