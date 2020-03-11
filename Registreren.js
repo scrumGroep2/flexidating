@@ -8,9 +8,7 @@ document.getElementById("toevoegen").onclick = function () {
     }
 
     if (verkeerdeElementen.length === 0) {
-        if (document.getElementById("wachtwoord").value != document.getElementById("wachtwoordHerhaal").value) {
-            document.getElementById("verschillendeWachtwoorden").style.display = "inline";
-        } else {
+        if (inputOK()) {
             voegProfielToe();
         }
     }
@@ -23,6 +21,34 @@ function resetFoutboodschappen() {
         element.style.display = "";
     }
 };
+
+function inputOK() {
+    let fouten=false;
+    var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+    const geboortedatum=new Date(document.getElementById("geboorte").value);
+    let datum=new Date();
+    datum=new Date(datum.setFullYear(datum.getFullYear() - 18));
+
+    const grootte=document.getElementById("grootte").value;
+    if (grootte<60||grootte>300) {
+        document.getElementById("foutGrootte").style.display = "block";
+        fouten=true;
+    }
+    const gewicht=document.getElementById("gewicht").value;
+    if (gewicht<20||gewicht>400) {
+        document.getElementById("foutGewicht").style.display = "block";
+        fouten=true;
+    }
+    if (!document.getElementById("wachtwoord").value.match(passw)) {
+        document.getElementById("wachtwoordPatroonOngeldig").style.display = "block";
+        fouten=true;
+    }
+    if (document.getElementById("wachtwoord").value != document.getElementById("wachtwoordHerhaal").value) {
+        document.getElementById("verschillendeWachtwoorden").style.display = "block";
+        fouten=true;
+    }
+    return !fouten;
+}
 
 async function voegProfielToe() {
     const wachten = document.getElementById("wachten");
