@@ -21,7 +21,7 @@ window.onload = function() {
         //LET OP : rooturl = https://scrumserver.tenobe.org/scrum/api
         fetch(url)
             .then(function (resp)   { return resp.json(); })
-            .then(function (data)   { console.log(data);  })
+            .then(function (data)   { weergaveResultaten(data);  })
             .catch(function (error) { console.log(error); });
             
     }
@@ -35,7 +35,7 @@ window.onload = function() {
         //LET OP : rooturl = https://scrumserver.tenobe.org/scrum/api                
         fetch(url)
             .then(function (resp)   { return resp.json(); })
-            .then(function (data)   { maakTabelResultaten(data); toonDetails();})
+            .then(function (data)   { weergaveResultaten(data);})
             .catch(function (error) { console.log(error); });
     }); 
 
@@ -47,7 +47,7 @@ window.onload = function() {
         //LET OP : rooturl = https://scrumserver.tenobe.org/scrum/api                
         fetch(url)
             .then(function (resp)   { return resp.json(); })
-            .then(function (data)   { maakTabelResultaten(data);  })
+            .then(function (data)   { weergaveResultaten(data);  })
             .catch(function (error) { console.log(error); });
     });
 
@@ -59,7 +59,7 @@ window.onload = function() {
         //LET OP : rooturl = https://scrumserver.tenobe.org/scrum/api
         fetch(url)
             .then(function (resp)   { return resp.json(); })
-            .then(function (data)   { maakTabelResultaten(data); })
+            .then(function (data)   { weergaveResultaten(data); })
             .catch(function (error) { console.log(error); });
     });
 
@@ -73,12 +73,29 @@ window.onload = function() {
         //LET OP : rooturl = https://scrumserver.tenobe.org/scrum/api
         fetch(url)
             .then(function (resp)   { return resp.json(); })
-            .then(function (data)   { maakTabelResultaten(data);})
+            .then(function (data)   { weergaveResultaten(data);})
             .catch(function (error) { console.log(error); });
 
     });
 
     // Met range (geboortedatum, grootte)
+    document.getElementById('knop11').addEventListener('click', function (e) {
+        let rangeMinGeboortedatum  =  document.getElementById('input11_1').value;
+        let rangeMaxGeboortedatum  =  document.getElementById('input11_2').value;
+
+        let rangeMinGrootte =  document.getElementById('input11_3').value;
+        let rangeMaxGrootte =  document.getElementById('input11_4').value;
+
+        let url=rooturl+'/profiel/search.php'
+        url+='?geboortedatumOperator=range&rangeMinGeboortedatum='+ rangeMinGeboortedatum +'&rangeMaxGeboortedatum='+ rangeMaxGeboortedatum ;
+        url+='&grootteOperator=range&rangeMinGrootte='+ rangeMinGrootte +'&rangeMaxGrootte='+ rangeMaxGrootte ;
+        
+        //LET OP : rooturl = https://scrumserver.tenobe.org/scrum/api
+        fetch(url)
+            .then(function (resp)   { return resp.json(); })
+            .then(function (data)   { weergaveResultaten(data); })
+            .catch(function (error) { console.log(error); });
+    });
 
     
     function maakTabelResultaten(data) {
@@ -98,6 +115,41 @@ window.onload = function() {
             tr.appendChild(tdNaam);
             tr.appendChild(tdKnop);
             tabelBody.appendChild(tr);
+        }
+    }
+
+    function verbergZoekfuncties() {
+        document.getElementById("zoekfuncties").style.display = "none";
+    }
+
+    function toonKnopNieuweZoekopdracht() {
+        document.getElementById("nieuweZoek").style.display = "inline";
+    }
+
+    function verbergKnopNieuweZoekopdracht() {
+        document.getElementById("nieuweZoek").style.display = "none";
+    }
+
+    function weergaveResultaten(data) {
+        maakTabelResultaten(data);
+        verbergZoekfuncties();
+        toonKnopNieuweZoekopdracht();
+    }
+
+    document.getElementById("nieuweZoek").onclick = function() {
+        toonZoekfuncties();
+        verwijderResultaten();
+        verbergKnopNieuweZoekopdracht();
+    }
+
+    function toonZoekfuncties() {
+        document.getElementById("zoekfuncties").style.display = "inline";
+    }
+
+    function verwijderResultaten() {
+        const tabelBody = document.getElementById("tabelBody");
+        while (tabelBody.lastElementChild !== null) {
+            tabelBody.lastElementChild.remove();
         }
     }
 }
