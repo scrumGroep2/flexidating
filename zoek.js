@@ -181,3 +181,30 @@ document.getElementById("logout").onclick=function(){
             buttons[i].disabled=true
         }
 }
+const sterrenbeelden = [
+    ['Steenbok',20],
+    ['Waterman',20],
+    ['Vissen',20],
+    ['Ram',20],
+    ['Stier',20],
+    ['Tweeling',20],
+    ['Kreeft',22],
+    ['Leeuw',22],
+    ['Maagd',22],
+    ['Weegschaal',22],
+    ['Schorpioen',22],
+    ['Boogschutter',21],
+    ['Steenbok',20]
+];
+
+
+
+function sterrenbeeld(dag,maand)
+{
+    return (dag <= sterrenbeelden[maand-1][1]) ? sterrenbeelden[maand-1][0] : sterrenbeelden[maand][0];
+}
+
+document.getElementById("test").onclick=function() {
+    document.getElementById("ster").innerText=sterrenbeeld(document.getElementById("dag").value,document.getElementById("maand").value);
+}
+
