@@ -16,6 +16,7 @@ function leesUserData() {
 }
 
 function toonDetails(data) {
+    console.log(data);
     document.getElementById("foto").src=`https://scrumserver.tenobe.org/scrum/img/${data.foto}`;
     document.getElementById("nickname").innerText = data.nickname;
     const ddJob = document.getElementById("job");

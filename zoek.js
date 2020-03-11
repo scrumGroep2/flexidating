@@ -8,6 +8,18 @@ function changeURL(sNewRoot){
 
 window.onload = function() {
 
+    if(sessionStorage.getItem("id")===null){
+        document.getElementById("geenLogin").innerText="inloggen"
+        let buttons = document.querySelectorAll("button");
+        for(let i=0;i<=buttons.length-1;i++) {
+            buttons[i].disabled=true
+        }
+    
+    }else{let buttons = document.querySelectorAll("button");
+    for(let i=0;i<=buttons.length-1;i++) {
+        buttons[i].disabled=false
+    }}
+
 
     
     /*
@@ -97,19 +109,37 @@ window.onload = function() {
             .catch(function (error) { console.log(error); });
     });
 
+
+    // Resultaten tonen
+    function weergaveResultaten(data) {
+        maakTabelResultaten(data);
+        verbergZoekfuncties();
+        toonKnopNieuweZoekopdracht();
+        naarDetail();
+    }
+
     
     function maakTabelResultaten(data) {
+        console.log(data);
         let tabelBody = document.getElementById("tabelBody");
         for (const user of data) {
             const tr = document.createElement("tr");
             const tdNickname = document.createElement("td");
             tdNickname.innerText = user.nickname;
+            const tdSterrenbeeld = document.createElement("td");
+            const dagAlsString = user.geboortedatum.substring(8);
+            const dag = parseInt(dagAlsString);
+            const maandAlsString = user.geboortedatum.substring(5, 7);
+            const maand = parseInt(maandAlsString);
+            console.log(user.geboortedatum);
+            tdSterrenbeeld.innerText = sterrenbeeld(dag, maand);
             const tdKnop = document.createElement("td");
             const knop = document.createElement("button");
             knop.innerText = "Bekijk profiel";
-            knop.setAttribute('data-id', user.id);
+            knop.setAttribute('data-id', user.id)
             tdKnop.appendChild(knop);
             tr.appendChild(tdNickname);
+            tr.appendChild(tdSterrenbeeld);
             tr.appendChild(tdKnop);
             tabelBody.appendChild(tr);
         }
@@ -123,17 +153,8 @@ window.onload = function() {
         document.getElementById("nieuweZoek").style.display = "inline";
     }
 
-    function verbergKnopNieuweZoekopdracht() {
-        document.getElementById("nieuweZoek").style.display = "none";
-    }
-
-    function weergaveResultaten(data) {
-        maakTabelResultaten(data);
-        verbergZoekfuncties();
-        toonKnopNieuweZoekopdracht();
-        naarDetail();
-    }
-
+        
+    // Nieuwe zoekopdracht
     document.getElementById("nieuweZoek").onclick = function() {
         toonZoekfuncties();
         verwijderResultaten();
@@ -151,6 +172,10 @@ window.onload = function() {
         }
     }
 
+    function verbergKnopNieuweZoekopdracht() {
+        document.getElementById("nieuweZoek").style.display = "none";
+    }
+
     function naarDetail() {
         const knoppen = document.querySelectorAll("#resultaten button"); 
         for (const knop of knoppen) {
@@ -160,31 +185,31 @@ window.onload = function() {
             }
         }
     }
+
+    const sterrenbeelden = [
+        ['Steenbok',20],
+        ['Waterman',20],
+        ['Vissen',20],
+        ['Ram',20],
+        ['Stier',20],
+        ['Tweeling',20],
+        ['Kreeft',22],
+        ['Leeuw',22],
+        ['Maagd',22],
+        ['Weegschaal',22],
+        ['Schorpioen',22],
+        ['Boogschutter',21],
+        ['Steenbok',20]
+    ];
+    
+    
+    
+    function sterrenbeeld(dag,maand)
+    {
+        return (dag <= sterrenbeelden[maand-1][1]) ? sterrenbeelden[maand-1][0] : sterrenbeelden[maand][0];
+    }
+
 }
-const sterrenbeelden = [
-    ['Steenbok',20],
-    ['Waterman',20],
-    ['Vissen',20],
-    ['Ram',20],
-    ['Stier',20],
-    ['Tweeling',20],
-    ['Kreeft',22],
-    ['Leeuw',22],
-    ['Maagd',22],
-    ['Weegschaal',22],
-    ['Schorpioen',22],
-    ['Boogschutter',21],
-    ['Steenbok',20]
-];
 
 
-
-function sterrenbeeld(dag,maand)
-{
-    return (dag <= sterrenbeelden[maand-1][1]) ? sterrenbeelden[maand-1][0] : sterrenbeelden[maand][0];
-}
-
-document.getElementById("test").onclick=function() {
-    document.getElementById("ster").innerText=sterrenbeeld(document.getElementById("dag").value,document.getElementById("maand").value);
-}
 

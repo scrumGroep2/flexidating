@@ -30,7 +30,8 @@ document.getElementById("login").onclick = function () {
             }
             if (data.message==="Authenticatie niet mogelijk."){
             document.getElementById("error").innerText="vul uw gegevens in";
-            } else {document.getElementById("error").innerText="foutieve inlog gegevens"}
+            } 
+            if(data.message==="Unauthorized") {document.getElementById("error").innerText="foutieve inlog gegevens"}
         })
         .catch(function (error) { 
             console.log(error); 
@@ -41,3 +42,6 @@ document.getElementById("register").onclick = function() {
     window.location.href="registreren.html"
 }
 
+document.getElementById("logout").onclick=function(){
+    sessionStorage.removeItem("id")
+}
