@@ -66,7 +66,8 @@ button {
 	border-radius: 3px;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;	
-	font-weight: bold;
+    font-weight: bold;
+    margin-top: 10px;
 }
 
 button:hover {
@@ -117,22 +118,22 @@ table {
 }
 
 dl {
-    border: 3px double #ccc;
+    border: 3px double #EB3B88;
     padding: 0.5em;
   }
   dt {
     float: left;
     clear: left;
-    width: 100px;
-    text-align: right;
+    width: 120px;
+    text-align: left;
     font-weight: bold;
-    color: green;
+    color: #EB3B88;
   }
   dt::after {
     content: ":";
   }
   dd {
-    margin: 0 0 0 110px;
+    margin: 0 0 0 130px;
     padding: 0 0 0.5em 0;
   }
 
