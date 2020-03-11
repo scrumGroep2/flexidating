@@ -4,6 +4,7 @@ console.log(id)
 if (id===null){
     document.getElementById("geenLogin").innerText="gelieven in te loggen"
 }else{
+    document.getElementById("geenLogin").innerText=""
     document.getElementById("verwijderen").disabled=false;
    leesUser();
 }
