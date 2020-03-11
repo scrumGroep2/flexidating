@@ -134,6 +134,7 @@ window.onload = function() {
         maakTabelResultaten(data);
         verbergZoekfuncties();
         toonKnopNieuweZoekopdracht();
+        naarDetail();
     }
 
     document.getElementById("nieuweZoek").onclick = function() {
@@ -150,6 +151,16 @@ window.onload = function() {
         const tabelBody = document.getElementById("tabelBody");
         while (tabelBody.lastElementChild !== null) {
             tabelBody.lastElementChild.remove();
+        }
+    }
+
+    function naarDetail() {
+        const knoppen = document.querySelectorAll("#resultaten button"); 
+        for (const knop of knoppen) {
+            knop.onclick = function () {
+                sessionStorage.setItem("resultaatId", this.dataset.id);
+                window.open("zoekdetail.html");
+            }
         }
     }
 }
