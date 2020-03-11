@@ -111,4 +111,20 @@ table {
   .hidden {
       display: none;
   }
+#coin {
+	height:2%;
+	width: 2%;
+}
+#currency {
+	
+}
 
+
+#foto {
+	height:10%;
+	width: 10%;
+}
+
+#resultaten {
+    margin-top: 10px;
+}
