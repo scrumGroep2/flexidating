@@ -119,12 +119,12 @@ window.onload = function() {
             const dag = parseInt(dagAlsString);
             const maandAlsString = user.geboortedatum.substring(5, 7);
             const maand = parseInt(maandAlsString);
-            console.log(maand);
+            console.log(user.geboortedatum);
             tdSterrenbeeld.innerText = sterrenbeeld(dag, maand);
             const tdKnop = document.createElement("td");
             const knop = document.createElement("button");
             knop.innerText = "Bekijk profiel";
-            knop.setAttribute('data-id', user.id);
+            knop.setAttribute('data-id', user.id)
             tdKnop.appendChild(knop);
             tr.appendChild(tdNickname);
             tr.appendChild(tdSterrenbeeld);

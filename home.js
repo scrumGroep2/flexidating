@@ -41,3 +41,6 @@ document.getElementById("register").onclick = function() {
     window.location.href="registreren.html"
 }
 
+document.getElementById("logout").onclick=function(){
+    sessionStorage.removeItem("id")
+}
