@@ -16,19 +16,18 @@
             <li><a href="profiel.html">Mijn profiel</a></li>
             <li><a href="zoek.html">Zoek een date</a></li>
         </ul>
-        
+             <!--zoek passende foto voor de lovecoins,span komt van javascript-->
+     <span id="currency"><img id="coin" src="" alt=""> <span id="lovecoins"></span></span>
     </nav>
-    <div class="header">
+    <div class="header clearfix">
         <span id="geenLogin"></span>
-        <!--zoek passende foto voor de lovecoins,span komt van javascript-->
-        <p id="currency"><img id="coin" src="" alt=""> <span id="lovecoins"></span></p>
         <!--nickname van database-->
         <p id="username"></p>
         <!--foto van gebruiker-->
         <p><img id="foto" src="" alt=""></p>
     </div>
-    <div class="information">
-        <dl>
+    <div class="information clearfix">
+        <dl class="clearfix">
         <!--voor en achternaam tesamen via javascript-->
         <dt>Naam</dt>
         <dd id="name"></dd>
@@ -59,10 +58,10 @@
         </dl>
     </div>
     <!--dit is voor later-->
-    <div class="change">
+    <div class="change clearfix">
         <button>profiel wijzigen</button>
     </div>
-    <div class="verwijderen">
+    <div class="verwijderen clearfix">
         <button id="verwijderen" disabled>profiel verwijderen</button>
     </div>
     <div class="hidden" class="change">

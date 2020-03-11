@@ -113,8 +113,19 @@ table {
       display: none;
   }
 #coin {
-	height:2%;
-	width: 2%;
+	height:30%;
+    width: 30%;
+}
+
+#currency{
+    width: 4%;
+    height: 4%;
+    float: right;
+    margin: 0%;
+}
+
+.header{
+    font-weight: bold;
 }
 
 dl {
@@ -135,6 +146,7 @@ dl {
   dd {
     margin: 0 0 0 130px;
     padding: 0 0 0.5em 0;
+    font-weight: bold;
   }
 
 
@@ -146,3 +158,9 @@ dl {
 #resultaten {
     margin-top: 10px;
 }
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
