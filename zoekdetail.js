@@ -16,9 +16,29 @@ function leesUserData() {
 }
 
 function toonDetails(data) {
-    console.log(data);
+    document.getElementById("foto").src=`https://scrumserver.tenobe.org/scrum/img/${data.foto}`;
+    document.getElementById("nickname").innerText = data.nickname;
     const ddJob = document.getElementById("job");
     ddJob.innerText = data.beroep;
+    const ddGender = document.getElementById("sex");
+    let gender = "man";
+    switch (data.sexe) {
+        case "v":
+            gender = "vrouw";
+            break;
+        case "x":
+            gender = "anders";
+            break;            
+    }
+    ddGender.innerText = gender;
+    const ddHaarkleur = document.getElementById("hair");
+    ddHaarkleur.innerText = data.haarkleur;
+    const ddOogkleur = document.getElementById("eye");
+    ddOogkleur.innerText = data.oogkleur;
+    const ddLengte = document.getElementById("height");
+    ddLengte.innerText = `${data.grootte} cm`;
+    const ddGewicht = document.getElementById("weight");
+    ddGewicht.innerText = `${data.gewicht} kg`;
 
 }
 
