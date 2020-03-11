@@ -2,11 +2,11 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Profiel detail</title>
+<title>Zoekprofiel detail</title>
 <link href="stylesheet.css" rel="stylesheet" />
 <script src="https://scrumserver.tenobe.org/scrum/js/prism.js"></script>
 <script src="https://scrumserver.tenobe.org/scrum/api/js/getGeoData.js"></script>
-<script src="zoekdetail.js"></script>
+<script src="zoekdetail.js" defer></script>
 <link rel="icon" type="image/png" href="heart.ico">
 
 </head>
@@ -17,6 +17,7 @@
         <ul>
             <li><a href="#" id="sluit">Detail sluiten</a></li>
             <li><a href="#" id="toevoegen">Toevoegen aan favorieten</a></li>
+            <li><a href="#" id="bericht versturen"></a>Bericht versturen</li>
         </ul>
         
     </nav>
@@ -29,22 +30,32 @@
     </div>
 
     <div class="information">
-        <!--voor en achternaam tesamen via javascript-->
-        <p id="name"></p>
-        <!--geboortedatum van user-->
-        <p id="birthday"></p>
-        <!--beroep-->
-        <p id="job"></p>
-        <!--geslacht-->
-        <p id="sex"></p>
-        <!--haarkleur-->
-        <p id="hair"></p>
-        <!--oogkleur-->
-        <p id="eye"></p>
-        <!--hoogte-->
-        <p id="height"></p>
-        <!--gewicht-->
-        <p id="weight"></p>
+        <dl>
+            <!--voor en achternaam tesamen via javascript-->
+            <dt>Naam</dt>
+            <dd id="name"></dd>
+            <!--geboortedatum-->
+            <dt>Geboortedatum</dt>
+            <dd id="birthday"></dd>
+            <!--beroep-->
+            <dt>Beroep</dt>
+            <dd id="job"></dd>
+            <!--geslacht-->
+            <dt>Geslacht</dt>
+            <dd id="sex"></dd>
+            <!--haarkleur-->
+            <dt>Haarkleur</dt>
+            <dd id="hair"></dd>
+            <!--oogkleur-->
+            <dt>Oogkleur</dt>
+            <dd id="eye"></dd>
+            <!--hoogte-->
+            <dt>Lengte</dt>
+            <dd id="height"></dd> <span> cm</span>
+            <!--gewicht-->
+            <dt>Gewicht</dt>
+            <dd id="weight"></dd> <span> kg</span>
+            </dl>
     </div>
 
 </body>

@@ -102,8 +102,6 @@ window.onload = function() {
         let tabelBody = document.getElementById("tabelBody");
         for (const user of data) {
             const tr = document.createElement("tr");
-            const tdNaam = document.createElement("td");
-            tdNaam.innerText = user.voornaam;
             const tdNickname = document.createElement("td");
             tdNickname.innerText = user.nickname;
             const tdKnop = document.createElement("td");
@@ -112,7 +110,6 @@ window.onload = function() {
             knop.setAttribute('data-id', user.id);
             tdKnop.appendChild(knop);
             tr.appendChild(tdNickname);
-            tr.appendChild(tdNaam);
             tr.appendChild(tdKnop);
             tabelBody.appendChild(tr);
         }
