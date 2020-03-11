@@ -45,24 +45,6 @@ gtag('config', 'UA-134605105-1');
                     <td><br></td>
                     <td><button class="myButton" type="button" id="knop1">Voer Uit</button></td>
                 </tr>
-                <!--<tr>
-                    <td>Haal een pagina van alle profielen op</td>
-                    <td>
-                        <label for="input12_1" class="api_demo_lbl">pagina :         </label>    
-                        <input type="text" id="input12_1" value="1" class="api_demo_param" /><br>
-                        <label for="input12_2" class="api_demo_lbl">aantal per pagina :         </label>    
-                        <input type="text" id="input12_2" value="50" class="api_demo_param" />
-                    </td>
-                    <td><button class="myButton" class="myButton" type="button" id="knop12">Voer Uit</button></td>
-                </tr>-->
-                <!--<tr>
-                    <td>Zoek 1 profiel op basis van de id:</td>
-                    <td>
-                        <label for="input2_1" class="api_demo_lbl">profiel id:         </label>    
-                        <input type="text" id="input2_1" value="7" class="api_demo_param" />
-                    </td>
-                    <td><button class="myButton" class="myButton" type="button" id="knop2">Voer Uit</button></td>
-                </tr>-->
                 <tr>
                     <td>Zoek profielen volgens grootte vanaf:</td>
                     <td>
@@ -73,7 +55,7 @@ gtag('config', 'UA-134605105-1');
                         <label for="input3_3" class="hidden">orderBy :            </label>   
                         <input type="text" id="input3_3"  value="grootte"  class="hidden"/>
                     </td>
-                    <td><button class="myButton" class="myButton" type="button" id="knop3">Voer Uit</button></td>
+                    <td><button class="myButton" type="button" id="knop3">Voer Uit</button></td>
                 </tr>
                 <tr>
                     <td>Zoek profielen met behulp van % (deel van de naam):</td>
@@ -137,15 +119,11 @@ gtag('config', 'UA-134605105-1');
                     </td>
                     <td><button class="myButton" type="button" id="knop6">Voer Uit</button></td>
                 </tr>
-               
             </tbody>
         </table>
-
-
     </form>
-
     <br>
-
+    <button class="myButton hidden" type="button" id="nieuweZoek">Nieuwe zoekopdracht</button><br>
     <table id="resultaten">
         <thead>
           <tr>
@@ -155,17 +133,19 @@ gtag('config', 'UA-134605105-1');
           </tr>
         </thead>
         <tbody id="tabelBody">
-    
         </tbody>
     </table>
-
     <br>
 
-    <button class="myButton" type="button" id="nieuweZoek" onclick="tblVerwijderen()">Nieuwe zoekopdracht</button>
-    <script>
+    
+    <!-- <script>
         function tblVerwijderen() { 
-            $("#resultaten").remove();
+            const tabelBody = document.getElementById("tabelBody")
+            while(tabelBody.lastElementChild !== null) {
+                tabelBody.lastElementChild.remove();
+            }
+
         }
-    </script>
+    </script> -->
 </body>
 </html>
