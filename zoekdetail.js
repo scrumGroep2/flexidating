@@ -1,12 +1,18 @@
 "use strict";
 
-
+toonDetails();
+sluit();
 
 function toonDetails() {
-    const id = sessionStorage.get("resultaatId");
-
+    const id = sessionStorage.getItem("resultaatId");
 }
 
-document.getElementById("sluit").onclick = function() {
-    window.close();
+function sluit() {
+    console.log("hallo");
+    const sluit = document.getElementById("sluit");
+    sluit.onclick = function() {
+        if (confirm("Profiel sluiten?")) {
+            window.close();
+        }
+    }
 }
