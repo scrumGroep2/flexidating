@@ -1,5 +1,7 @@
 "use strict"
-var rooturl = "https://scrumserver.tenobe.org/scrum/api";
+let rooturl = "https://scrumserver.tenobe.org/scrum/api";
+
+
 
 function changeURL(sNewRoot){
     rooturl = sNewRoot;
@@ -21,100 +23,73 @@ window.onload = function() {
         buttons[i].disabled=false
     }}
 
-
-    
-    /*
-    --------------------------------------
-    -- knoppen voor profielen
-    --------------------------------------
-    */
-    // Alle profielen
-    document.getElementById('knop1').onclick = function() {
-        let url=rooturl+'/profiel/read.php';
-        //LET OP : rooturl = https://scrumserver.tenobe.org/scrum/api
+    document.getElementById('zoek').onclick = function() {
+        let url = rooturl+= '/profiel/search.php?';
+        url = grootteFilter(url);
+        url = voornaamFilter(url);
+        url = geslachtFilter(url);
+        url = geboortedatumFilter(url);          
         fetch(url)
             .then(function (resp)   { return resp.json(); })
-            .then(function (data)   { weergaveResultaten(data);  })
+            .then(function (data)   { weergaveResultaten(data);})
             .catch(function (error) { console.log(error); });
-            
     }
-    // Grootte
-    document.getElementById('knop3').addEventListener('click', function (e) {
-        let grootte =  document.getElementById('input3_1').value;
-        let grootteOperator =  document.getElementById('input3_2').value;
-        let orderby =  document.getElementById('input3_3').value;
 
-        let url=rooturl+'/profiel/search.php?grootte='+ grootte + '&grootteOperator='+ grootteOperator + '&orderBy='+ orderby ;
-        //LET OP : rooturl = https://scrumserver.tenobe.org/scrum/api                
-        fetch(url)
-            .then(function (resp)   { return resp.json(); })
-            .then(function (data)   { weergaveResultaten(data);})
-            .catch(function (error) { console.log(error); });
-    }); 
 
-    // Voornaam
-    document.getElementById('knop4').addEventListener('click', function (e) {
-        let voornaam  =  document.getElementById('input4_1').value;
+    function grootteFilter(url) {
+        let grootte = document.getElementById('inputGrootte').value;
+        let grootteOperator =  document.getElementById('inputGrootteOperator').value;
+        let orderby =  document.getElementById('inputGrootteOrderBy').value;
+        if (grootte.trim().length > 0 && grootteOperator.trim().length > 0 && orderby.trim().length > 0) {
+            url+='&grootte='+ grootte + '&grootteOperator='+ grootteOperator + '&orderBy='+ orderby;
+        }
+        console.log(url)
+        return url
+    }
+    
 
-        let url=rooturl+'/profiel/search.php?voornaam='+ voornaam  ;
-        //LET OP : rooturl = https://scrumserver.tenobe.org/scrum/api                
-        fetch(url)
-            .then(function (resp)   { return resp.json(); })
-            .then(function (data)   { weergaveResultaten(data);  })
-            .catch(function (error) { console.log(error); });
-    });
+    function voornaamFilter(url) {
+        let voornaam = document.getElementById('inputNaam').value;
+        if (voornaam.trim().length > 0) {
+            console.log(url+='&voornaam=' + voornaam);
+        }
+        console.log(url);
+        return url;
+    }
 
-    // Fuzzy zoeken voornaam
-    document.getElementById('knop5').addEventListener('click', function (e) {
-        let geslacht  =  document.getElementById('input5_1').value;
 
-        let url=rooturl+'/profiel/search.php?sexe='+geslacht;
-        //LET OP : rooturl = https://scrumserver.tenobe.org/scrum/api
-        fetch(url)
-            .then(function (resp)   { return resp.json(); })
-            .then(function (data)   { weergaveResultaten(data); })
-            .catch(function (error) { console.log(error); });
-    });
+    function geslachtFilter(url) {
+        let geslacht = document.getElementById('inputGeslacht').value;
+        if (geslacht.length > 0) {
+            url+='&sexe=' + geslacht;
+        }
+        console.log(url);
+        return url;
+    }
+
+    function geboortedatumFilter(url) {
+        let min = document.getElementById('inputMinGeboortedatum').value;
+        let rangeMinGeboortedatum = min.toString();
+        let max = document.getElementById('inputMaxGeboortedatum').value;
+        let rangeMaxGeboortedatum =max.toString();
+        console.log(rangeMinGeboortedatum);
+        console.log(rangeMaxGeboortedatum);
+        if (rangeMinGeboortedatum.trim().length > 0 && rangeMaxGeboortedatum.trim().length > 0) {
+            url+='&geboortedatumOperator=range&rangeMinGeboortedatum='+ 
+            rangeMinGeboortedatum +'&rangeMaxGeboortedatum='+ rangeMaxGeboortedatum;
+        }
+        console.log(url)
+        return url;
+    }
+
+
 
     
-    // Geslacht
-    document.getElementById('knop6').addEventListener('click', function (e) {
-        let geboortedatum  =  document.getElementById('input6_1').value;
-        let geboortedatumOperator  =  document.getElementById('input6_2').value;
-
-        let url=rooturl+'/profiel/search.php?geboortedatum='+ geboortedatum + '&geboortedatumOperator='+ geboortedatumOperator;
-        //LET OP : rooturl = https://scrumserver.tenobe.org/scrum/api
-        fetch(url)
-            .then(function (resp)   { return resp.json(); })
-            .then(function (data)   { weergaveResultaten(data);})
-            .catch(function (error) { console.log(error); });
-
-    });
-
-    // Met range (geboortedatum, grootte)
-    document.getElementById('knop11').addEventListener('click', function (e) {
-        let rangeMinGeboortedatum  =  document.getElementById('input11_1').value;
-        let rangeMaxGeboortedatum  =  document.getElementById('input11_2').value;
-
-        let rangeMinGrootte =  document.getElementById('input11_3').value;
-        let rangeMaxGrootte =  document.getElementById('input11_4').value;
-
-        let url=rooturl+'/profiel/search.php'
-        url+='?geboortedatumOperator=range&rangeMinGeboortedatum='+ rangeMinGeboortedatum +'&rangeMaxGeboortedatum='+ rangeMaxGeboortedatum ;
-        url+='&grootteOperator=range&rangeMinGrootte='+ rangeMinGrootte +'&rangeMaxGrootte='+ rangeMaxGrootte ;
-        
-        //LET OP : rooturl = https://scrumserver.tenobe.org/scrum/api
-        fetch(url)
-            .then(function (resp)   { return resp.json(); })
-            .then(function (data)   { weergaveResultaten(data); })
-            .catch(function (error) { console.log(error); });
-    });
-
-
     // Resultaten tonen
     function weergaveResultaten(data) {
         maakTabelResultaten(data);
         verbergZoekfuncties();
+        verbergKnopZoek();
         toonKnopNieuweZoekopdracht();
         naarDetail();
     }
@@ -195,6 +170,10 @@ window.onload = function() {
         document.getElementById("nieuweZoek").style.display = "none";
     }
 
+    function verbergKnopZoek() {
+        document.getElementById("zoek").style.display = "none";
+    }
+
     function naarDetail() {
         const knoppen = document.querySelectorAll("#resultaten button"); 
         for (const knop of knoppen) {
@@ -228,7 +207,6 @@ window.onload = function() {
         return (dag <= sterrenbeelden[maand-1][1]) ? sterrenbeelden[maand-1][0] : sterrenbeelden[maand][0];
     }
 
-}
 
 
 document.getElementById("logout").onclick=function(){
@@ -239,4 +217,5 @@ document.getElementById("logout").onclick=function(){
     for(let i=0;i<=buttons.length-1;i++) {
         buttons[i].disabled=true
     }
+}
 }
