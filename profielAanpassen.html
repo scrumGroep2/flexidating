@@ -27,65 +27,67 @@
         
         <form>
             <h3><span id="profielVan">Details van </span></h3>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="detailNick">Nickname : </label> 
-                        <input type="text" class="form-control" id="detailNick" value="nog niet ontvangen" maxlength="100" required>
-                        <span id=detailNickFout class="fout">Verplicht</span>
-                    </div><br>
-                    <div class="form-group">
-                        <label for="detailFnaam">Familienaam : </label>
-                        <input type="text" class="form-control" id="detailFnaam" value="nog niet ontvangen" maxlength="1000" required>
-                        <span id=detailFnaamFout class="fout">Verplicht</span>
-                    </div><br>
-                    <div class="form-group">
-                        <label for="detailVnaam">Voornaam : </label>
-                        <input type="text" class="form-control" id="detailVnaam" value="nog niet ontvangen" maxlength='1000' required>
-                        <span id=detailVnaamFout class="fout">Verplicht</span>
-                    </div><br>
-                    <div class="form-group">
-                        <label for="detailGeboortedatum">Geboortedatum : </label>
-                        <input type="text" class="form-control" id="detailGeboortedatum" value="nog niet ontvangen" required>
-                        <span id=detailGeboortedatumFout class="fout">Verplicht</span>
-                    </div><br>
-                    <div class="form-group">
-                        <label for="detailHaarkleur">Haarkleur : </label>
-                        <input type="text" class="form-control" id="detailHaarkleur" value="nog niet ontvangen" maxlength="50" required>
-                        <span id=detailHaarkleurFout class="fout">Verplicht</span>
-                    </div><br>
-                    <div class="form-group">
-                        <label for="detailBeroep">Beroep : </label> 
-                        <input type="text" class="form-control" id="detailBeroep" value="nog niet ontvangen" maxlength="1000" required>
-                        <span id=detailBeroepFout class="fout">Verplicht</span>
-                    </div><br>
-                    <div class="form-group">
-                        <label for="detailEmail">Email : </label>
-                        <input type="email" class="form-control" id="detailEmail" value="nog niet ontvangen" maxlength="1000" required>
-                        <span id=detailEmailFout class="fout">Verplicht</span>
-                    </div><br>
-                    <div class="form-group">
-                        <label for="detailGewicht">Gewicht : </label>
-                        <input type="number" class="form-control" id="detailGewicht" value="00000" required>
-                        <span id=detailGewichtFout class="fout">Verplicht</span>
-                    </div>
+            <table>
+
+                <tbody>
+                    <tr>
+                        <td for="detailNick">Nickname : </td> 
+                        <td><input type="text" class="form-control" id="detailNick" value="nog niet ontvangen" maxlength="100" required></td>
+                        <td><span id=detailNickFout class="fout">Verplicht</span></td>
+                    </tr>
+                    <tr>
+                        <td for="detailFnaam">Familienaam : </td>
+                        <td><input type="text" class="form-control" id="detailFnaam" value="nog niet ontvangen" maxlength="1000" required></td>
+                        <td><span id=detailFnaamFout class="fout">Verplicht</span></td>
+                    </tr>
+                    <tr>
+                        <td for="detailVnaam">Voornaam : </td>
+                        <td><input type="text" class="form-control" id="detailVnaam" value="nog niet ontvangen" maxlength='1000' required></td>
+                        <td><span id=detailVnaamFout class="fout">Verplicht</span></td>
+                    </tr>
+                    <tr>
+                        <td for="detailGeboortedatum">Geboortedatum : </td>
+                        <td><input type="text" class="form-control" id="detailGeboortedatum" value="nog niet ontvangen" required></td>
+                        <td><span id=detailGeboortedatumFout class="fout">Verplicht</span></td>
+                    </tr>
+                    <tr>
+                        <td for="detailHaarkleur">Haarkleur : </td>
+                        <td><input type="text" class="form-control" id="detailHaarkleur" value="nog niet ontvangen" maxlength="50" required></td>
+                        <td><span id=detailHaarkleurFout class="fout">Verplicht</span></td>
+                    </tr>
+                    <tr>
+                        <td for="detailBeroep">Beroep : </td> 
+                        <td><input type="text" class="form-control" id="detailBeroep" value="nog niet ontvangen" maxlength="1000" required></td>
+                        <td><span id=detailBeroepFout class="fout">Verplicht</span></td>
+                    </tr>
+                    <tr>
+                        <td for="detailEmail">Email : </td>
+                        <td><input type="email" class="form-control" id="detailEmail" value="nog niet ontvangen" maxlength="1000" required></td>
+                        <td><span id=detailEmailFout class="fout">Verplicht</span></td>
+                    </tr>
+                    <tr>
+                        <td for="detailGewicht">Gewicht : </td>
+                        <td><input type="number" class="form-control" id="detailGewicht" value="00000" required></td>
+                        <td><span id=detailGewichtFout class="fout">Verplicht</span></td>
+                    </tr>
                 
-                </div>
+                </tbody>
+
+            </table>
+            <div class="form-group">
+                <button id="btnSubmit" title="Mijn profiel updaten" onclick="return false;">Updaten!</button>
+                <span id="updateFeedback"></span>
+                <div id="wachten">Even wachten aub.</div>
+                <div id="reedsBestaandeNickname" class="fout">Nickname is reeds in gebruik. Kies een andere.</div>
+                <div id="foutVerwerkenGegevens" class="fout">Er is een probleem opgetreden bij het verwerken van de gegevens.</div>
+                <div id="onder18jaar" class="fout">U moet minstens 18 jaar zijn om op deze site te daten.</div>
+                <div id="foutGrootte" class="fout">Grootte is niet juist.</div>
+                <div id="foutGewicht" class="fout">Gewicht is niet juist.</div>
+            </div>
+            <div class="col-md-6">
                 <div class="form-group">
-                    <input type="submit" name="btnSubmit"  id="btnSubmit" class="buton" value="Update" onclick="return false;" />
-                    <span id="updateFeedback"></span>
-                    <div id="wachten">Even wachten aub.</div>
-                    <div id="reedsBestaandeNickname" class="fout">Nickname is reeds in gebruik. Kies een andere.</div>
-                    <div id="foutVerwerkenGegevens" class="fout">Er is een probleem opgetreden bij het verwerken van de gegevens.</div>
-                    <div id="onder18jaar" class="fout">U moet minstens 18 jaar zijn om op deze site te daten.</div>
-                    <div id="foutGrootte" class="fout">Grootte is niet juist.</div>
-                    <div id="foutGewicht" class="fout">Gewicht is niet juist.</div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <img id="detailFoto" src="https://scrumserver.tenobe.org/scrum/img/no_image.png" alt="profielfoto"
-                            class="profielfoto">
-                    </div>
+                    <img id="detailFoto" src="https://scrumserver.tenobe.org/scrum/img/no_image.png" alt="profielfoto"
+                        class="profielfoto">
                 </div>
             </div>
         </form>
