@@ -192,3 +192,8 @@ dl {
     margin-block-start: 0px;
     margin: 0%;
   }
+
+.resultatenFeedback {
+  margin-top: 5px;
+  font-style: italic;
+}
