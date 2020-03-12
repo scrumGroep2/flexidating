@@ -2,7 +2,7 @@
 
 window.onload = function () {
 
-    let data;
+    let profielData;
 
     let profielId = sessionStorage.getItem("id")
         if (profielId===null){
@@ -22,7 +22,7 @@ window.onload = function () {
         .then(function (resp) { return resp.json(); })
         .then(function (data) {
 
-            let profielData = data;
+            profielData = data;
 
             document.getElementById('detailNick').value = profielData.nickname;
             document.getElementById('detailFnaam').value = profielData.familienaam;
@@ -62,8 +62,8 @@ window.onload = function () {
 
         fetch(request)
             .then(function (resp) { return resp.json(); })
-            .then(function (data) { console.log(data); })
-            .catch(function (error) { console.log(error); });
+            .then(function (data) { document.getElementById('updateFeedback').innerText="Update geslaagd"; })
+            .catch(function (error) { document.getElementById('updateFeedback').innerText="Update mislukt, probeer opnieuw" + error; });
 
     });         
 };
