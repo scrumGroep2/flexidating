@@ -13,7 +13,7 @@ window.onload = function() {
     let datum=new Date();
     datum=new Date(datum.setFullYear(datum.getFullYear() - 18));
     this.document.getElementById("inputMaxGeboortedatum").defaultValue=this.formatDate(datum);
-    
+
     this.verbergMeldingenResultaten();
 
     if(sessionStorage.getItem("id")===null){
@@ -126,7 +126,6 @@ window.onload = function() {
 
     
 
-    
     // Resultaten tonen
     function weergaveResultaten(data) {
         console.log(data);
