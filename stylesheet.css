@@ -192,6 +192,12 @@ dl {
     margin-block-start: 0px;
     margin: 0%;
   }
+
+.resultatenFeedback {
+  margin-top: 5px;
+  font-style: italic;
+}
+
 .footer{
     position:fixed;
     height:65px;

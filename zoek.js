@@ -10,6 +10,12 @@ function changeURL(sNewRoot){
 
 window.onload = function() {
 
+    let datum=new Date();
+    datum=new Date(datum.setFullYear(datum.getFullYear() - 18));
+    this.document.getElementById("inputMaxGeboortedatum").defaultValue=this.formatDate(datum);
+
+    this.verbergMeldingenResultaten();
+
     if(sessionStorage.getItem("id")===null){
         window.location.replace("home.html")
         document.getElementById("geenLogin").innerText="inloggen"
@@ -17,41 +23,61 @@ window.onload = function() {
         for(let i=0;i<=buttons.length-1;i++) {
             buttons[i].disabled=true
         }
-    
     }else{let buttons = document.querySelectorAll("button");
     for(let i=0;i<=buttons.length-1;i++) {
         buttons[i].disabled=false
     }}
+}
 
+    function formatDate(date) {
+        var year = date.getFullYear().toString();
+        var month = (date.getMonth() + 101).toString().substring(1);
+        var day = (date.getDate() + 100).toString().substring(1);
+        return year + "-" + month + "-" + day;
+    }
+    
+    // ZOEK
     document.getElementById('zoek').onclick = function() {
+        document.getElementById('zoek').disabled = true;
         let url = rooturl+= '/profiel/search.php?';
         url = grootteFilter(url);
-        url = voornaamFilter(url);
+        url = nicknameFilter(url);
         url = geslachtFilter(url);
-        url = geboortedatumFilter(url);          
+        url = geboortedatumFilter(url);
+        url = oogkleurFilter(url);   
+        url = haarkleurFilter(url);       
         fetch(url)
             .then(function (resp)   { return resp.json(); })
             .then(function (data)   { weergaveResultaten(data);})
             .catch(function (error) { console.log(error); });
     }
 
-
+    //FILTERS
     function grootteFilter(url) {
-        let grootte = document.getElementById('inputGrootte').value;
-        let grootteOperator =  document.getElementById('inputGrootteOperator').value;
-        let orderby =  document.getElementById('inputGrootteOrderBy').value;
-        if (grootte.trim().length > 0 && grootteOperator.trim().length > 0 && orderby.trim().length > 0) {
-            url+='&grootte='+ grootte + '&grootteOperator='+ grootteOperator + '&orderBy='+ orderby;
+        let minGrootte = document.getElementById('inputGrootteMin').value;
+        let maxGrootte = document.getElementById('inputGrootteMax').value;
+        if (minGrootte.trim().length > 0 && maxGrootte.trim().length > 0) {
+            url+='&grootteOperator=range&rangeMinGrootte='+ minGrootte + '&rangeMaxGrootte=' + maxGrootte + '&orderBy=grootte';
+        }
+        console.log(url)
+        return url
+    }
+
+    function gewichtFilter(url) {
+        let minGrootte = document.getElementById('inputGewichtMin').value;
+        let maxGrootte = document.getElementById('inputGewichtMax').value;
+        if (minGrootte.trim().length > 0 && maxGrootte.trim().length > 0) {
+            url+='&grootteOperator=range&rangeMinGrootte='+ minGrootte + '&rangeMaxGrootte=' + maxGrootte + '&orderBy=grootte';
         }
         console.log(url)
         return url
     }
     
 
-    function voornaamFilter(url) {
-        let voornaam = document.getElementById('inputNaam').value;
-        if (voornaam.trim().length > 0) {
-            console.log(url+='&voornaam=' + voornaam);
+    function nicknameFilter(url) {
+        let nickname = document.getElementById('inputNickname').value;
+        if (nickname.trim().length > 0) {
+           url+='&nickname=' + '%' + nickname + '%';
         }
         console.log(url);
         return url;
@@ -72,8 +98,6 @@ window.onload = function() {
         let rangeMinGeboortedatum = min.toString();
         let max = document.getElementById('inputMaxGeboortedatum').value;
         let rangeMaxGeboortedatum =max.toString();
-        console.log(rangeMinGeboortedatum);
-        console.log(rangeMaxGeboortedatum);
         if (rangeMinGeboortedatum.trim().length > 0 && rangeMaxGeboortedatum.trim().length > 0) {
             url+='&geboortedatumOperator=range&rangeMinGeboortedatum='+ 
             rangeMinGeboortedatum +'&rangeMaxGeboortedatum='+ rangeMaxGeboortedatum;
@@ -82,21 +106,45 @@ window.onload = function() {
         return url;
     }
 
+    function oogkleurFilter(url) {
+        let oogkleur = document.getElementById('inputOogkleur').value;
+        if (oogkleur.trim().length > 0) {
+            url+='&oogkleur=' + '%' + oogkleur + '%';
+        }
+        console.log(url);
+        return url;
+    }
 
+    function haarkleurFilter(url) {
+        let haarkleur = document.getElementById('inputHaarkleur').value;
+        if (haarkleur.trim().length > 0) {
+            url+='&haarkleur=' + '%' + haarkleur + '%';
+        }
+        console.log(url);
+        return url;
+    }
 
     
+
     // Resultaten tonen
     function weergaveResultaten(data) {
-        maakTabelResultaten(data);
-        verbergZoekfuncties();
-        verbergKnopZoek();
-        toonKnopNieuweZoekopdracht();
-        naarDetail();
+        console.log(data);
+            toonKnopNieuweZoekopdracht();
+            verbergZoekfuncties();
+            verbergKnopZoek();
+            if (data.message) {
+                document.getElementById('geenResultaten').style.display = "inline";
+            } else {
+                maakTabelResultaten(data);
+                document.getElementById('gevondenResultaten').style.display = "inline";
+                naarDetail();
+            }  
+
+            document.getElementById('zoek').disabled = false;
     }
 
     
     function maakTabelResultaten(data) {
-        console.log(data);
         let tabelBody = document.getElementById("tabelBody");
         for (const user of data) {
             const tr = document.createElement("tr");
@@ -150,11 +198,17 @@ window.onload = function() {
         
     // Nieuwe zoekopdracht
     document.getElementById("nieuweZoek").onclick = function() {
+        verbergMeldingenResultaten();
         toonZoekfuncties();
         verwijderResultaten();
         verbergKnopNieuweZoekopdracht();
+        toonKnopZoek();
     }
 
+    function verbergMeldingenResultaten() {
+        document.getElementById("geenResultaten").style.display="none";
+        document.getElementById("gevondenResultaten").style.display="none";
+    }
     function toonZoekfuncties() {
         document.getElementById("zoekfuncties").style.display = "inline";
     }
@@ -172,6 +226,10 @@ window.onload = function() {
 
     function verbergKnopZoek() {
         document.getElementById("zoek").style.display = "none";
+    }
+
+    function toonKnopZoek() {
+        document.getElementById("zoek").style.display ="inline";
     }
 
     function naarDetail() {
@@ -217,5 +275,4 @@ document.getElementById("logout").onclick=function(){
     for(let i=0;i<=buttons.length-1;i++) {
         buttons[i].disabled=true
     }
-}
 }
