@@ -81,6 +81,7 @@
         Wachtwoord:
         <span id=wachtwoordFout class="fout">Verplicht</span>
         <input type="password" id="wachtwoord" name="wachtwoord" required>
+        <span>6 tot 20 characters met minstens 1 nummer, 1 hoofdletter en 1 kleine letter</span>
     </label><br>
     <label>
         Herhaal wachtwoord:
@@ -88,10 +89,15 @@
         <input type="password" id="wachtwoordHerhaal" name="wachtwoordHerhaal" required>
     </label><br>
     
-    <button id="toevoegen">Ik registreer mij</button>    
+    <button id="toevoegen">Ik registreer mij</button>
+    <p></p>    
     <div id="wachten">Even wachten aub.</div>
     <div id="reedsBestaandeNickname" class="fout">Nickname is reeds in gebruik. Kies een andere.</div>
-    <div id="foutVerwerkenGegevens" class="fout">Er is een probleem opgetreden bij het verwerken van de gegevens</div>
+    <div id="foutVerwerkenGegevens" class="fout">Er is een probleem opgetreden bij het verwerken van de gegevens.</div>
+    <div id="onder18jaar" class="fout">U moet minstens 18 jaar zijn om op deze site te daten.</div>
+    <div id="foutGrootte" class="fout">Grootte is niet juist.</div>
+    <div id="foutGewicht" class="fout">Gewicht is niet juist.</div>
+    <div id="wachtwoordPatroonOngeldig" class="fout">Wachtwoord voldoet niet aan de vereisten.</div>
     <div id="verschillendeWachtwoorden" class="fout">Vul 2 maal hetzelfde wachtwoord in.</div>
 </div>
 </body>
