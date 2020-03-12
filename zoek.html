@@ -105,15 +105,19 @@ gtag('config', 'UA-134605105-1');
                 </tr>                
             </tbody>
         </table> <br>
-        <button id="zoek">Zoek een date!</button><br>
+        <button id="zoek" title="Zoek dates volgens bovenstaande kenmerken">Zoek passende dates!</button><br>
+        <button id="lucky" title="Cupido kiest één profiel voor jou uit!">I feel lucky</button>
+                        <select id="inputGeslachtLucky">
+                            <option value="%">alle geslachten</option>
+                            <option>v</option>
+                            <option>m</option>
+                            <option>x</option>
+                        </select><br>
         <p id="geenResultaten" class="hidden resultatenFeedback">Jammer, geen match gevonden... probeer nog eens!</p>
         <p id="gevondenResultaten" class="hidden resultatenFeedback">Kijk snel of de liefde van je leven in de lijst hieronder staat!</p>
+        <p id="luckyGevonden" class="hidden resultatenFeedback">Cupido vond voor jou onderstaande match!</p><br>
         
     </form>
-    
-    <br>
-    <div id="wachten">Even wachten aub.</div>
-    <br>
     <button class="hidden" type="button" id="nieuweZoek">Nieuwe zoekopdracht</button><br>
     <table id="resultaten">
         <thead>
