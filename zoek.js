@@ -10,11 +10,11 @@ function changeURL(sNewRoot){
 
 window.onload = function() {
 
+    // Set maximum geboortedatum
     let datum=new Date();
     datum=new Date(datum.setFullYear(datum.getFullYear() - 18));
     this.document.getElementById("inputMaxGeboortedatum").defaultValue=this.formatDate(datum);
 
-    this.verbergMeldingenResultaten();
 
     if(sessionStorage.getItem("id")===null){
         window.location.replace("home.html")
@@ -36,7 +36,8 @@ window.onload = function() {
         return year + "-" + month + "-" + day;
     }
     
-    // ZOEK
+    
+    // ZOEK MET FILTERS
     document.getElementById('zoek').onclick = function() {
         document.getElementById('zoek').disabled = true;
         let url = rooturl+= '/profiel/search.php?';
@@ -52,86 +53,41 @@ window.onload = function() {
             .catch(function (error) { console.log(error); });
     }
 
-    //FILTERS
-    function grootteFilter(url) {
-        let minGrootte = document.getElementById('inputGrootteMin').value;
-        let maxGrootte = document.getElementById('inputGrootteMax').value;
-        if (minGrootte.trim().length > 0 && maxGrootte.trim().length > 0) {
-            url+='&grootteOperator=range&rangeMinGrootte='+ minGrootte + '&rangeMaxGrootte=' + maxGrootte + '&orderBy=grootte';
-        }
-        console.log(url)
-        return url
-    }
-
-    function gewichtFilter(url) {
-        let minGrootte = document.getElementById('inputGewichtMin').value;
-        let maxGrootte = document.getElementById('inputGewichtMax').value;
-        if (minGrootte.trim().length > 0 && maxGrootte.trim().length > 0) {
-            url+='&grootteOperator=range&rangeMinGrootte='+ minGrootte + '&rangeMaxGrootte=' + maxGrootte + '&orderBy=grootte';
-        }
-        console.log(url)
-        return url
-    }
-    
-
-    function nicknameFilter(url) {
-        let nickname = document.getElementById('inputNickname').value;
-        if (nickname.trim().length > 0) {
-           url+='&nickname=' + '%' + nickname + '%';
-        }
+    // I FEEL LUCKY
+    document.getElementById('lucky').onclick = function() {
+        let url=rooturl+'/profiel/search.php?&sexe=' + document.getElementById('inputGeslachtLucky').value;
         console.log(url);
-        return url;
+        let aantalUsers;
+        fetch(url)
+            .then(function (resp)   { return resp.json(); })
+            .then(function (data)   { 
+                console.log(data);
+                aantalUsers = parseInt(data.length);
+                let randomUserIndex = Math.floor(Math.random() * aantalUsers);
+                console.log(randomUserIndex);
+                maakTabelRij(data[randomUserIndex]);
+                naarDetail();
+             })
+            .catch(function (error) { console.log(error); });
+            weergaveNaZoekopdracht();
+            toonMeldingLuckyGevonden();
+            
     }
 
-
-    function geslachtFilter(url) {
-        let geslacht = document.getElementById('inputGeslacht').value;
-        if (geslacht.length > 0) {
-            url+='&sexe=' + geslacht;
-        }
-        console.log(url);
-        return url;
+    function weergaveNaZoekopdracht () {
+        document.getElementById("zoek").style.display = "none";
+        document.getElementById("lucky").style.display="none";
+        document.getElementById("inputGeslachtLucky").style.display="none";
+        document.getElementById("zoekfuncties").style.display = "none";
+        document.getElementById("nieuweZoek").style.display = "inline"; 
     }
 
-    function geboortedatumFilter(url) {
-        let min = document.getElementById('inputMinGeboortedatum').value;
-        let rangeMinGeboortedatum = min.toString();
-        let max = document.getElementById('inputMaxGeboortedatum').value;
-        let rangeMaxGeboortedatum =max.toString();
-        if (rangeMinGeboortedatum.trim().length > 0 && rangeMaxGeboortedatum.trim().length > 0) {
-            url+='&geboortedatumOperator=range&rangeMinGeboortedatum='+ 
-            rangeMinGeboortedatum +'&rangeMaxGeboortedatum='+ rangeMaxGeboortedatum;
-        }
-        console.log(url)
-        return url;
-    }
+   
 
-    function oogkleurFilter(url) {
-        let oogkleur = document.getElementById('inputOogkleur').value;
-        if (oogkleur.trim().length > 0) {
-            url+='&oogkleur=' + '%' + oogkleur + '%';
-        }
-        console.log(url);
-        return url;
-    }
-
-    function haarkleurFilter(url) {
-        let haarkleur = document.getElementById('inputHaarkleur').value;
-        if (haarkleur.trim().length > 0) {
-            url+='&haarkleur=' + '%' + haarkleur + '%';
-        }
-        console.log(url);
-        return url;
-    }
-
-    
-
-    // Resultaten tonen
+    // Zoekresultaten tonen
     function weergaveResultaten(data) {
         console.log(data);
-            toonKnopNieuweZoekopdracht();
-            verbergZoekfuncties();
-            verbergKnopZoek();
+            weergaveNaZoekopdracht();
             if (data.message) {
                 document.getElementById('geenResultaten').style.display = "inline";
             } else {
@@ -143,38 +99,41 @@ window.onload = function() {
             document.getElementById('zoek').disabled = false;
     }
 
-    
     function maakTabelResultaten(data) {
         let tabelBody = document.getElementById("tabelBody");
         for (const user of data) {
-            const tr = document.createElement("tr");
-            const tdNickname = document.createElement("td");
-            tdNickname.innerText = user.nickname;
-            const tdSterrenbeeld = document.createElement("td");
-            if (geboortedatumIsValid(user.geboortedatum)) {
-                const dagAlsString = user.geboortedatum.substring(8);
-                const dag = parseInt(dagAlsString);
-                const maandAlsString = user.geboortedatum.substring(5, 7);
-                const maand = parseInt(maandAlsString);
-                const imgSterrenbeeld = document.createElement("img");
-                imgSterrenbeeld.src = `sterrenbeelden/${sterrenbeeld(dag, maand)}.jpg`;
-                imgSterrenbeeld.width = "100";
-                imgSterrenbeeld.height = "100";
-                tdSterrenbeeld.appendChild(imgSterrenbeeld);
-            } else {
-                tdSterrenbeeld.innerText = "sterrenbeeld niet beschikbaar";
-            }
-            
-            const tdKnop = document.createElement("td");
-            const knop = document.createElement("button");
-            knop.innerText = "Bekijk profiel";
-            knop.setAttribute('data-id', user.id)
-            tdKnop.appendChild(knop);
-            tr.appendChild(tdNickname);
-            tr.appendChild(tdSterrenbeeld);
-            tr.appendChild(tdKnop);
-            tabelBody.appendChild(tr);
+            maakTabelRij(user);   
         }
+    }
+
+    function maakTabelRij(user) {
+        const tr = document.createElement("tr");
+        const tdNickname = document.createElement("td");
+        tdNickname.innerText = user.nickname;
+        const tdSterrenbeeld = document.createElement("td");
+        if (geboortedatumIsValid(user.geboortedatum)) {
+            const dagAlsString = user.geboortedatum.substring(8);
+            const dag = parseInt(dagAlsString);
+            const maandAlsString = user.geboortedatum.substring(5, 7);
+            const maand = parseInt(maandAlsString);
+            const imgSterrenbeeld = document.createElement("img");
+            imgSterrenbeeld.src = `sterrenbeelden/${sterrenbeeld(dag, maand)}.jpg`;
+            imgSterrenbeeld.width = "100";
+            imgSterrenbeeld.height = "100";
+            tdSterrenbeeld.appendChild(imgSterrenbeeld);
+        } else {
+            tdSterrenbeeld.innerText = "sterrenbeeld niet beschikbaar";
+        }
+        
+        const tdKnop = document.createElement("td");
+        const knop = document.createElement("button");
+        knop.innerText = "Bekijk profiel";
+        knop.setAttribute('data-id', user.id)
+        tdKnop.appendChild(knop);
+        tr.appendChild(tdNickname);
+        tr.appendChild(tdSterrenbeeld);
+        tr.appendChild(tdKnop);
+        tabelBody.appendChild(tr);
     }
 
     function geboortedatumIsValid(geboortedatum) {
@@ -187,28 +146,27 @@ window.onload = function() {
         return false;
     }
 
-    function verbergZoekfuncties() {
-        document.getElementById("zoekfuncties").style.display = "none";
-    }
-
-    function toonKnopNieuweZoekopdracht() {
-        document.getElementById("nieuweZoek").style.display = "inline";
-    }
-
-        
+    
     // Nieuwe zoekopdracht
     document.getElementById("nieuweZoek").onclick = function() {
         verbergMeldingenResultaten();
         toonZoekfuncties();
         verwijderResultaten();
         verbergKnopNieuweZoekopdracht();
-        toonKnopZoek();
+        toonZoekKnoppen();
     }
 
     function verbergMeldingenResultaten() {
         document.getElementById("geenResultaten").style.display="none";
         document.getElementById("gevondenResultaten").style.display="none";
+        document.getElementById("luckyGevonden").style.display="none";
     }
+
+    function toonMeldingLuckyGevonden() {
+        document.getElementById("luckyGevonden").style.display="inline";
+    }
+
+
     function toonZoekfuncties() {
         document.getElementById("zoekfuncties").style.display = "inline";
     }
@@ -224,11 +182,10 @@ window.onload = function() {
         document.getElementById("nieuweZoek").style.display = "none";
     }
 
-    function verbergKnopZoek() {
-        document.getElementById("zoek").style.display = "none";
-    }
 
-    function toonKnopZoek() {
+    function toonZoekKnoppen() {
+        document.getElementById("lucky").style.display="inline";
+        document.getElementById("inputGeslachtLucky").style.display="inline";
         document.getElementById("zoek").style.display ="inline";
     }
 
@@ -265,6 +222,77 @@ window.onload = function() {
         return (dag <= sterrenbeelden[maand-1][1]) ? sterrenbeelden[maand-1][0] : sterrenbeelden[maand][0];
     }
 
+ //FILTERS
+ function grootteFilter(url) {
+    let minGrootte = document.getElementById('inputGrootteMin').value;
+    let maxGrootte = document.getElementById('inputGrootteMax').value;
+    if (minGrootte.trim().length > 0 && maxGrootte.trim().length > 0) {
+        url+='&grootteOperator=range&rangeMinGrootte='+ minGrootte + '&rangeMaxGrootte=' + maxGrootte + '&orderBy=grootte';
+    }
+    console.log(url)
+    return url
+}
+
+function gewichtFilter(url) {
+    let minGrootte = document.getElementById('inputGewichtMin').value;
+    let maxGrootte = document.getElementById('inputGewichtMax').value;
+    if (minGrootte.trim().length > 0 && maxGrootte.trim().length > 0) {
+        url+='&grootteOperator=range&rangeMinGrootte='+ minGrootte + '&rangeMaxGrootte=' + maxGrootte + '&orderBy=grootte';
+    }
+    console.log(url)
+    return url
+}
+
+
+function nicknameFilter(url) {
+    let nickname = document.getElementById('inputNickname').value;
+    if (nickname.trim().length > 0) {
+       url+='&nickname=' + '%' + nickname + '%';
+    }
+    console.log(url);
+    return url;
+}
+
+
+function geslachtFilter(url) {
+    let geslacht = document.getElementById('inputGeslacht').value;
+    if (geslacht.length > 0) {
+        url+='&sexe=' + geslacht;
+    }
+    console.log(url);
+    return url;
+}
+
+function geboortedatumFilter(url) {
+    let min = document.getElementById('inputMinGeboortedatum').value;
+    let rangeMinGeboortedatum = min.toString();
+    let max = document.getElementById('inputMaxGeboortedatum').value;
+    let rangeMaxGeboortedatum =max.toString();
+    if (rangeMinGeboortedatum.trim().length > 0 && rangeMaxGeboortedatum.trim().length > 0) {
+        url+='&geboortedatumOperator=range&rangeMinGeboortedatum='+ 
+        rangeMinGeboortedatum +'&rangeMaxGeboortedatum='+ rangeMaxGeboortedatum;
+    }
+    console.log(url)
+    return url;
+}
+
+function oogkleurFilter(url) {
+    let oogkleur = document.getElementById('inputOogkleur').value;
+    if (oogkleur.trim().length > 0) {
+        url+='&oogkleur=' + '%' + oogkleur + '%';
+    }
+    console.log(url);
+    return url;
+}
+
+function haarkleurFilter(url) {
+    let haarkleur = document.getElementById('inputHaarkleur').value;
+    if (haarkleur.trim().length > 0) {
+        url+='&haarkleur=' + '%' + haarkleur + '%';
+    }
+    console.log(url);
+    return url;
+}
 
 
 document.getElementById("logout").onclick=function(){
