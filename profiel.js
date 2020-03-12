@@ -61,3 +61,7 @@ document.getElementById("logout").onclick=function(){
     sessionStorage.removeItem("id")
     sessionStorage.removeItem("nickname")
 }
+
+document.getElementById("profielAanpassen").onclick = function() {
+    window.location.href="profielAanpassen.html"
+}
