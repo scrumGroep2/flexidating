@@ -12,7 +12,7 @@ document.getElementById('knop30').addEventListener('click', function (e) {
         .catch(function (error) { console.log(error); });
 });
 
-//vraag een specifieke favoriet op
+//vraag een specifieke favoriet op (klaar zie favpagine.js)
 document.getElementById('knop31').addEventListener('click', function (e) {  
     let id =  document.getElementById('input31_1').value; 
 
@@ -23,7 +23,7 @@ document.getElementById('knop31').addEventListener('click', function (e) {
         .catch(function (error) { console.log(error); });
 });
 
-// voeg toe aan favorieten
+// voeg toe aan favorieten (klaar zie zoekdetail.js)
 document.getElementById("toevoegen").onclick= function () {  
     let mijnId =  sessionStorage.getItem("id"); 
     let anderId = sessionStorage.getItem("resultaatId");
