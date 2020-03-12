@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="nl">
+
+<head>
+    <script src="profielAanpassen.js" defer></script>
+    <title>Profiel aanpassen</title>
+    <link rel="icon" href="heart.ico" type="image/x-icon">
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+
+<body>
+    <img src="banner.jpg" id="banner" alt="banner">
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="profiel.html">Mijn profiel</a></li>
+            <li><a href="zoek.html">Zoek een date</a></li>
+            <li><a href="home.html" id="logout">log uit</a></li>
+        </ul>
+    </nav>
+    <p id="currency"><img id="coin" src="" alt=""> <span id="lovecoins"></span></p>
+    <div class="header clearfix">
+        <span id="geenLogin"></span>
+        <p id="username"></p>
+        <p><img id="foto" src="" alt=""></p>
+    </div>
+    <div class="information">
+        <dl class="clearfix">
+        <dt>Naam</dt>
+        <dd id="name"></dd>
+        <dt>Geboortedatum</dt>
+        <dd id="birthday"></dd>
+        <!-- wijzigbaar
+        <dt>e-mail</dt>
+        <dd id="mail"></dd>
+        <dt>Beroep</dt>
+        <dd id="job"></dd>
+        <dt>Geslacht</dt>
+        <dd id="sex"></dd>
+        <dt>Haarkleur</dt>
+        <dd id="hair"></dd>
+        <dt>Oogkleur</dt>
+        <dd id="eye"></dd>-->
+        <dt>Lengte</dt>
+        <dd id="height"></dd>
+        <dt>Gewicht</dt>
+        <dd id="weight"></dd>
+        </dl>
+    </div>
+
+    <div class="form">
+        <!--niet wijzigbaar
+        <label>
+            Familienaam:
+            <span id=fnaamFout class="fout">Verplicht</span>
+            <input type="text" id="fnaam" name="fnaam" maxlength="1000" required>
+        </label><br>
+        <label>
+            Voornaam:
+            <span id=vnaamFout class="fout">Verplicht</span>
+            <input type="text" id="vnaam" name="vnaam" maxlength="1000" required>
+        </label><br>
+        <label>
+            Geboortedatum:
+            <span id=geboorteFout class="fout">Verplicht</span>
+            <input type="date" id="geboorte" name="geboorte" required>
+        </label><br> -->
+        <label>
+            E-mail:
+            <span id=emailFout class="fout">Verplicht</span>
+            <input type="email" id="mail" name="email" maxlength="1000" required>
+        </label><br>
+        <label>
+            Nickname:
+            <span id=nicknameFout class="fout">Verplicht</span>
+            <input type="text" id="nickname" name="nickname" maxlength="100" required>
+        </label><br>
+        <label>
+            Beroep:
+            <span id=beroepFout class="fout">Verplicht</span>
+            <input type="text" id="job" name="beroep" maxlength="1000" required>
+        </label><br>
+        <label>Kies geslacht:
+            <select id="sex">
+                <option value="m">Man</option>
+                <option value="v">Vrouw</option>
+                <option value="x">Cross</option>
+            </select>
+        </label>    
+        <!--<label>Man
+            <input type="radio" id="man" name="gender" value="m">
+        </label>
+        <label>Vrouw
+            <input type="radio" id="vrouw" name="gender" value="v">
+        </label>
+        <label>X
+            <input type="radio" id="ander" name="gender" value="x">
+        </label>-->
+        <label>
+            Haarkleur:
+            <span id=haarkleurFout class="fout">Verplicht</span>
+            <input type="text" id="hair" name="haarkleur" maxlength="50" required>
+        </label><br>
+        <label>
+            Oogkleur:
+            <span id=oogkleurFout class="fout">Verplicht</span>
+            <input type="text" id="eye" name="oogkleur" maxlength="50" required>
+        </label><br>
+        <label>
+            Grootte (in cm):
+            <span id=grootteFout class="fout">Verplicht</span>
+            <input type="number" id="heigth" name="grootte" required>
+        </label><br>
+        <label>
+            Gewicht (in kg):
+            <span id=gewichtFout class="fout">Verplicht</span>
+            <input type="number" id="weight" name="gewicht" required>
+        </label><br>
+        <label>
+            Wachtwoord:
+            <span id=wachtwoordFout class="fout">Verplicht</span>
+            <input type="password" id="wachtwoord" name="wachtwoord" required>
+        </label><br>
+        <label>
+            Herhaal wachtwoord:
+            <span id=wachtwoordHerhaalFout class="fout">Verplicht</span>
+            <input type="password" id="wachtwoordHerhaal" name="wachtwoordHerhaal" required>
+        </label><br>
+        
+        <button id="aanpassen">Profiel aanpassen</button>    
+        <div id="wachten">Even wachten aub.</div>
+        <div id="reedsBestaandeNickname" class="fout">Nickname is reeds in gebruik. Kies een andere.</div>
+        <div id="foutVerwerkenGegevens" class="fout">Er is een probleem opgetreden bij het verwerken van de gegevens, probeer opnieuw.</div>
+        <div id="verschillendeWachtwoorden" class="fout">Vul 2 maal hetzelfde wachtwoord in.</div>
+    </div>
+</body>
+</html>
