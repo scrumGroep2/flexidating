@@ -9,7 +9,7 @@ let url = rooturl + '/favoriet/read.php?profielId=' + profielId;
 fetch(url)
     .then(function (resp) { return resp.json(); })
     .then(function (favorieten) {
-        console.log(favorieten.length);
+        console.log(favorieten);
         for (let i = 0; i < favorieten.length; i++) {
             let personen = rooturl + '/profiel/read_one.php?id=' + favorieten[i].anderId;;
             fetch(personen)
@@ -49,7 +49,7 @@ fetch(url)
                 link.innerText = "X";
                 tdVerwijder.appendChild(link);
                 link.setAttribute('data-row', i)
-                link.setAttribute('data-remove', data.id)
+                link.setAttribute('data-remove', favorieten[i].id)
                 const tdKnop = document.createElement("td");
                 const knop = document.createElement("button");
                 knop.innerText = "Bekijk profiel";
@@ -89,7 +89,7 @@ fetch(url)
                         let id = this.dataset.remove
                         console.log(id)
                         document.getElementById("tabelBody").deleteRow(this.dataset.row);
-                        let url = rooturl + '/favoriet/delete.php';
+                        let url = rooturl+'/favoriet/delete.php';
                         let data = {
                             id: id
                         }
