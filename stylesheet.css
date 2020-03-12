@@ -192,3 +192,8 @@ dl {
     margin-block-start: 0px;
     margin: 0%;
   }
+.footer{
+    position:fixed;
+    width:100%;
+    bottom:0px;
+}
