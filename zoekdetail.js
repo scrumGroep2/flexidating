@@ -54,3 +54,27 @@ function sluit() {
 }
 
 
+document.getElementById("toevoegen").onclick= function () {  
+    let mijnId =  sessionStorage.getItem("id"); 
+    let anderId = sessionStorage.getItem("resultaatId");
+
+    let url=rooturl+'/favoriet/like.php';
+    let data = {
+        mijnId: mijnId,
+        anderId: anderId
+    }
+
+    var request = new Request(url, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: new Headers({
+            'Content-Type': 'application/json'
+        })
+    });
+    
+    fetch(request)
+        .then( function (resp)  { return resp.json(); })
+        .then( function (data)  { console.log(data);  })
+        .catch(function (error) { console.log(error); });
+
+};
