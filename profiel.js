@@ -32,6 +32,7 @@ async function leesUser(){
 }
 
 document.getElementById("verwijderen").onclick = function () {
+    if (confirm("Profiel verwijderen?")) {
     const foutVerwerkenGegevens=document.getElementById("foutVerwerkenGegevens");
     foutVerwerkenGegevens.style.display = "";
     let url="https://scrumserver.tenobe.org/scrum/api/profiel/delete.php";
@@ -44,13 +45,16 @@ document.getElementById("verwijderen").onclick = function () {
                 });
 
     fetch(request)
-            .then( function (resp)  { sessionStorage.removeItem("id");
+            .then( function (resp)  { 
+            sessionStorage.removeItem("id");
+            sessionStorage.removeItem("nickname");
             window.location.href = "home.html"; })
             .then( function (data)  { console.log(data);  })
             .catch(function (error) { console.log(error);
                 foutVerwerkenGegevens.style.display = "block"; });
 
-
+                window.close();
+            }
 }
 
 document.getElementById("logout").onclick=function(){
