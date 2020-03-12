@@ -73,6 +73,7 @@ async function voegProfielToe() {
         if (response.ok) {
             const resultaat = await response.json();
             sessionStorage.setItem("id", resultaat.id)
+            sessionStorage.setItem("nickname", nickname)
             window.location.href = "profiel.html"
         } else {
             document.getElementById("foutVerwerkenGegevens").style.display = "inline";
