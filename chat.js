@@ -13,13 +13,14 @@ window.onload = function () {
 }
 
 async function getBerichten() {
-    let url = 'https://scrumserver.tenobe.org/scrum/api/bericht/read.php?profielId=2';
+    document.getElementById("wachten").style.display="block";
+    let url = 'https://scrumserver.tenobe.org/scrum/api/bericht/read.php?profielId=1';
 
     try {
         const response = await fetch(url);
         const data = await response.json();
         for (const conversatie of data) {
-            if (conversatie[0].partnerId === "1") {
+            if (conversatie[0].partnerId === "3") {
                 for (const bericht of conversatie) {
                     voegBerichtToe(document.getElementById("berichtenBody"),
                         bericht.bericht, bericht.benIkZender === "0" ? false : true);
@@ -30,6 +31,7 @@ async function getBerichten() {
     } catch (error) {
         console.log(error);
     }
+    document.getElementById("berichten").scrollIntoView(false);
 }
 function voegBerichtToe(tbody, bericht, benIkZender) {
     const tr = tbody.insertRow();
