@@ -171,3 +171,24 @@ dl {
     color: #EB3B88;
     font-weight: bold;
   }
+
+#berichten .mijnBericht{
+  background-color: floralwhite;
+}
+.gesprekspartnerBericht{
+    background-color: rgb(255, 236, 244);
+}
+
+.leftAlign{
+  text-align: left;
+}
+.rightAlign{
+  text-align: right;
+}
+#berichten {
+  width: 100%;
+}
+  .form p{
+    margin-block-start: 0px;
+    margin: 0%;
+  }
