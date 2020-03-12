@@ -109,7 +109,7 @@ window.onload = function() {
     function oogkleurFilter(url) {
         let oogkleur = document.getElementById('inputOogkleur').value;
         if (oogkleur.trim().length > 0) {
-            url+='&oogkleur=' + oogkleur;
+            url+='&oogkleur=' + '%' + oogkleur + '%';
         }
         console.log(url);
         return url;
@@ -118,7 +118,7 @@ window.onload = function() {
     function haarkleurFilter(url) {
         let haarkleur = document.getElementById('inputHaarkleur').value;
         if (haarkleur.trim().length > 0) {
-            url+='&haarkleur=' + haarkleur;
+            url+='&haarkleur=' + '%' + haarkleur + '%';
         }
         console.log(url);
         return url;
