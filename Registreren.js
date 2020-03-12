@@ -1,4 +1,17 @@
 "use strict";
+window.onload = function () {
+    let datum=new Date();
+    datum=new Date(datum.setFullYear(datum.getFullYear() - 18));
+    this.document.getElementById("geboorte").defaultValue=this.formatDate(datum);
+    
+}
+
+function formatDate(date) {
+    var year = date.getFullYear().toString();
+    var month = (date.getMonth() + 101).toString().substring(1);
+    var day = (date.getDate() + 100).toString().substring(1);
+    return year + "-" + month + "-" + day;
+}
 
 document.getElementById("toevoegen").onclick = function () {
     resetFoutboodschappen();
@@ -28,7 +41,10 @@ function inputOK() {
     const geboortedatum=new Date(document.getElementById("geboorte").value);
     let datum=new Date();
     datum=new Date(datum.setFullYear(datum.getFullYear() - 18));
-
+    if (geboortedatum>datum) {
+        document.getElementById("onder18jaar").style.display = "block";
+        fouten=true;
+    }
     const grootte=document.getElementById("grootte").value;
     if (grootte<60||grootte>300) {
         document.getElementById("foutGrootte").style.display = "block";
