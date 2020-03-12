@@ -64,13 +64,12 @@
                         <input type="email" class="form-control" id="detailEmail" value="nog niet ontvangen" maxlength="1000" required>
                         <span id=detailEmailFout class="fout">Verplicht</span>
                     </div><br>
- <!--                   <div class="form-group">
-                        <label for="detailLovecoins">Lovecoins : </label> <input type="text" class="form-control" id="detailLovecoins"
-                            value="nog niet ontvangen">
+                    <div class="form-group">
+                        <label for="detailGewicht">Gewicht : </label>
+                        <input type="number" class="form-control" id="detailGewicht" value="00000" required>
+                        <span id=detailGewichtFout class="fout">Verplicht</span>
                     </div>
-                -->
-
-
+                
                 </div>
                 <div class="form-group">
                     <input type="submit" name="btnSubmit"  id="btnSubmit" class="buton" value="Update" onclick="return false;" />
@@ -96,133 +95,3 @@
 </body>
 
 </html>
-
-<!--<!doctype html>
-<html lang="nl">
-
-<head>
-    <script src="profielAanpassen.js" defer></script>
-    <title>Profiel aanpassen</title>
-    <link rel="icon" href="heart.ico" type="image/x-icon">
-    <link rel="stylesheet" href="stylesheet.css">
-</head>
-
-<body>
-
-    <div class="information">
-        <dl class="clearfix">
-            <dt>Nickname</dt>
-            <dd id="username"></dd>
-            <dt>Naam</dt>
-            <dd id="name"></dd>
-            <dt>Geboortedatum</dt>
-            <dd id="birthday"></dd>
-            <label>
-                <dt>E-mail</dt>
-                <span id=emailFout class="fout">Verplicht</span>
-                <dd><input type="email" id="mail" name="email" maxlength="1000" required></dd>
-            </label><br>
-            <label>
-                <dt>Nickname</dt>
-                <span id=nicknameFout class="fout">Verplicht</span>
-                <dd><input type="text" id="username" name="nickname" maxlength="100" required></dd>
-            </label><br>
-            <label>
-                <dt>Beroep</dt>
-                <span id=beroepFout class="fout">Verplicht</span>
-                <dd><input type="text" id="job" name="beroep" maxlength="1000" required></dd>
-            </label><br>  
-            <dt>e-mail</dt>
-            <dd id="mail"></dd>
-            <dt>Beroep</dt>
-            <dd id="job"></dd>
-            <label>
-                <dt>Geslacht</dt>
-                <dd id="sex"></dd>
-            </label>
-            <dt>Haarkleur</dt>
-            <dd id="hair"></dd>
-            <dt>Oogkleur</dt>
-            <dd id="eye"></dd>
-            <dt>Lengte</dt>
-            <dd id="height"></dd>
-            <label>            
-                <dt>Gewicht</dt>
-                <span id=gewichtFout class="fout">Verplicht</span>
-                <dd input type="number" id="weight" name="gewicht" required></dd>
-            </label>
-
-        </dl>
-    </div>
-
-    <div class="form">
-        <label>
-            E-mail:
-            <span id=emailFout class="fout">Verplicht</span>
-            <input type="email" id="mail" name="email" maxlength="1000" required>
-        </label><br>
-        <label>
-            Nickname:
-            <span id=nicknameFout class="fout">Verplicht</span>
-            <input type="text" id="nickname" name="nickname" maxlength="100" required>
-        </label><br>
-        <label>
-            Beroep:
-            <span id=beroepFout class="fout">Verplicht</span>
-            <input type="text" id="job" name="beroep" maxlength="1000" required>
-        </label><br>
-        <label>Kies geslacht:
-            <select id="sex">
-                <option value="m">Man</option>
-                <option value="v">Vrouw</option>
-                <option value="x">Cross</option>
-            </select>
-        </label>    
-        <label>Man
-            <input type="radio" id="man" name="gender" value="m">
-        </label>
-        <label>Vrouw
-            <input type="radio" id="vrouw" name="gender" value="v">
-        </label>
-        <label>X
-            <input type="radio" id="ander" name="gender" value="x">
-        </label>
-        <label>
-            Haarkleur:
-            <span id=haarkleurFout class="fout">Verplicht</span>
-            <input type="text" id="hair" name="haarkleur" maxlength="50" required>
-        </label><br>
-        <label>
-            Oogkleur:
-            <span id=oogkleurFout class="fout">Verplicht</span>
-            <input type="text" id="eye" name="oogkleur" maxlength="50" required>
-        </label><br>
-        <label>
-            Grootte (in cm):
-            <span id=grootteFout class="fout">Verplicht</span>
-            <input type="number" id="heigth" name="grootte" required>
-        </label><br>
-        <label>
-            Gewicht (in kg):
-            <span id=gewichtFout class="fout">Verplicht</span>
-            <input type="number" id="weight" name="gewicht" required>
-        </label><br>
-        <label>
-            Wachtwoord:
-            <span id=wachtwoordFout class="fout">Verplicht</span>
-            <input type="password" id="wachtwoord" name="wachtwoord" required>
-        </label><br>
-        <label>
-            Herhaal wachtwoord:
-            <span id=wachtwoordHerhaalFout class="fout">Verplicht</span>
-            <input type="password" id="wachtwoordHerhaal" name="wachtwoordHerhaal" required>
-        </label><br>
-        
-        <button id="aanpassen">Profiel aanpassen</button>    
-        <div id="wachten">Even wachten aub.</div>
-        <div id="reedsBestaandeNickname" class="fout">Nickname is reeds in gebruik. Kies een andere.</div>
-        <div id="foutVerwerkenGegevens" class="fout">Er is een probleem opgetreden bij het verwerken van de gegevens, probeer opnieuw.</div>
-        <div id="verschillendeWachtwoorden" class="fout">Vul 2 maal hetzelfde wachtwoord in.</div>
-    </div>
-</body>
-</html>-->
