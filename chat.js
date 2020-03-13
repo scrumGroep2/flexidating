@@ -87,7 +87,7 @@ function toevoegKnop() {
         fetch(request)
             .then( function (resp)  { return resp.json(); })
             .then( function (data)  { voegBerichtToe(document.getElementById("berichtenBody"),bericht, true); 
-                                        document.getElementById("nieuwbericht").value="";  })
+                                        document.getElementById("nieuwBericht").value="";  })
             .catch(function (error) { document.getElementById("foutVerwerkenGegevens").style.display="block"; });
     
     }
