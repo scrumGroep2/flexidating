@@ -25,8 +25,8 @@ async function leesUser() {
         .then(function (data) {
             console.log(data);
             document.getElementById("username").innerText = data.nickname;
-            document.getElementById("coin").src = "lovecoin.jpg";
-            document.getElementById("lovecoins").innerText = data.lovecoins;
+           // document.getElementById("coin").src = "lovecoin.jpg";
+           // document.getElementById("lovecoins").innerText = data.lovecoins;
             document.getElementById("foto").src = `https://scrumserver.tenobe.org/scrum/img/${data.foto}`;
             document.getElementById("name").innerText = `${data.voornaam} ${data.familienaam}`;
             document.getElementById("birthday").innerText = data.geboortedatum;

@@ -44,7 +44,6 @@ function toonDetails(data) {
 }
 
 function sluit() {
-    console.log("hallo");
     const sluit = document.getElementById("sluit");
     sluit.onclick = function() {
         if (confirm("Profiel sluiten?")) {
@@ -77,4 +76,10 @@ document.getElementById("toevoegen").onclick= function () {
         .then( function (data)  { console.log(data);  })
         .catch(function (error) { console.log(error); });
 
+        confirm("Favoriet toegevoegd!");
+
 };
+
+document.getElementById("bericht versturen").onclick=function () {
+    window.open("chat.html");
+}
