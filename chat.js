@@ -1,25 +1,29 @@
-window.onload = function () {
-    this.document.getElementById("partner").innerText = "fluffy snowflake";
-    const berichtenBody = this.document.getElementById("berichtenBody");
-    this.voegBerichtToe(berichtenBody, "hallo, wil je met me chatten", true);
-    this.voegBerichtToe(berichtenBody, "Dit is een hele lange tekst om te testen hoe het er uit" +
-        "zal zien op de site. Please date mij. Ik ben wanhopig op zoek naar een lief. Hoeft zelfs geen knappe te zijn.", true);
-    this.voegBerichtToe(berichtenBody, "dringend partner gezocht", true);
-    this.voegBerichtToe(berichtenBody, "laat me met rust lozer", false);
-    this.voegBerichtToe(berichtenBody, "wil je met me sexten", true);
-    this.voegBerichtToe(berichtenBody, "bah! viezerik", false);
-    this.voegBerichtToe(berichtenBody, "laat me met rust of ik bel de politie", false);
-    this.getBerichten();
+const eigenId=sessionStorage.getItem("id");
+const partnerId=sessionStorage.getItem("resultaatId");
+if(eigenId===null || partnerId===null){
+    window.location.replace("home.html")
+} 
+getPartnerData();
+getBerichten();
+sluit();
+
+function getPartnerData() {                
+    let url='https://scrumserver.tenobe.org/scrum/api/profiel/read_one.php?id='+partnerId;
+    fetch(url)
+        .then(function (resp)   { return resp.json(); })
+        .then(function (data)   { document.getElementById("partner").innerText = data.nickname;  })
+        .catch(function (error) { console.log(error); });
 }
 
 async function getBerichten() {
-    let url = 'https://scrumserver.tenobe.org/scrum/api/bericht/read.php?profielId=2';
+    document.getElementById("wachten").style.display="block";
+    let url = 'https://scrumserver.tenobe.org/scrum/api/bericht/read.php?profielId='+eigenId;
 
     try {
         const response = await fetch(url);
         const data = await response.json();
         for (const conversatie of data) {
-            if (conversatie[0].partnerId === "1") {
+            if (conversatie[0].partnerId === partnerId) {
                 for (const bericht of conversatie) {
                     voegBerichtToe(document.getElementById("berichtenBody"),
                         bericht.bericht, bericht.benIkZender === "0" ? false : true);
@@ -30,7 +34,10 @@ async function getBerichten() {
     } catch (error) {
         console.log(error);
     }
+    document.getElementById("berichten").scrollIntoView(false);
+    document.getElementById("wachten").style.display="";
 }
+
 function voegBerichtToe(tbody, bericht, benIkZender) {
     const tr = tbody.insertRow();
     const tdBericht = tr.insertCell();

@@ -68,6 +68,7 @@ button {
 	-moz-border-radius: 3px;	
     font-weight: bold;
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 button:hover {
@@ -192,10 +193,25 @@ dl {
     margin-block-start: 0px;
     margin: 0%;
   }
+
+.resultatenFeedback {
+  margin-top: 5px;
+  font-style: italic;
+}
+
 .footer{
     position:fixed;
-    width:100%;
+    height:65px;
     bottom:0px;
+    background-color: rgb(243, 144, 188);
+    color: white;
+    width: 930px;
+    margin: auto;
+    padding: 10px;   
+}
+.footer textarea{
+  vertical-align: bottom;
+  margin-right: 10px;
 }
 
 .preview{

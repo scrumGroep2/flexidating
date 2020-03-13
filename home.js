@@ -58,16 +58,16 @@ if (sessionStorage.getItem("id")!==null){
     loggedin.classList.add("hidden");
     let homeLog=document.getElementById("homeLog");
     let span = document.createElement("span");
-    span.innerText=`uw bent ingelogt als ${sessionStorage.getItem("nickname")}`;
+    span.innerText=`U bent ingelogd als ${sessionStorage.getItem("nickname")}!`;
     homeLog.appendChild(span);
     console.log(span)
     console.log(homeLog)
     let p = document.createElement("p")
-    p.innerText=`bent u dit niet? klik `
+    p.innerText=`Niet jou profiel? Klik `
     homeLog.appendChild(p)
     let link = document.createElement("a")
     link.href="home.html"
-    link.innerText="hier"
+    link.innerText="hier!"
     p.appendChild(link)
     link.onclick=function() {
     sessionStorage.removeItem("id")
