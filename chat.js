@@ -7,6 +7,7 @@ getPartnerData();
 getBerichten();
 sluit();
 toevoegKnop();
+refreshKnop();
 
 function getPartnerData() {                
     let url='https://scrumserver.tenobe.org/scrum/api/profiel/read_one.php?id='+partnerId;
@@ -92,3 +93,14 @@ function toevoegKnop() {
     
     }
 }
+
+function refreshKnop() {
+    document.getElementById("refresh").onclick= function() {
+        const berichtenBody = document.getElementById("berichtenBody");
+        while (berichtenBody.hasChildNodes()) {
+            berichtenBody.removeChild(berichtenBody.lastChild);
+        }
+        getBerichten();
+    }
+}
+
