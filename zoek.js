@@ -66,7 +66,7 @@ window.onload = function() {
                 let randomUserIndex = Math.floor(Math.random() * aantalUsers);
                 console.log(randomUserIndex);
                 maakTabelRij(data[randomUserIndex]);
-                naarDetail();
+                naarDetailOfBericht();
              })
             .catch(function (error) { console.log(error); });
             weergaveNaZoekopdracht();
@@ -93,7 +93,7 @@ window.onload = function() {
             } else {
                 maakTabelResultaten(data);
                 document.getElementById('gevondenResultaten').style.display = "inline";
-                naarDetail();
+                naarDetailOfBericht();
             }  
 
             document.getElementById('zoek').disabled = false;
@@ -125,14 +125,20 @@ window.onload = function() {
             tdSterrenbeeld.innerText = "sterrenbeeld niet beschikbaar";
         }
         
-        const tdKnop = document.createElement("td");
-        const knop = document.createElement("button");
-        knop.innerText = "Bekijk profiel";
-        knop.setAttribute('data-id', user.id)
-        tdKnop.appendChild(knop);
+        const tdKnopDetail = document.createElement("td");
+        const knopDetail = document.createElement("button");
+        knopDetail.innerText = "Bekijk profiel";
+        knopDetail.setAttribute('data-id', user.id);
+        tdKnopDetail.appendChild(knopDetail);
+        const tdKnopBericht = document.createElement("td");
+        const knopBericht = document.createElement("button");
+        knopBericht.innerText = "Stuur bericht";
+        knopBericht.setAttribute('data-id', user.id);
+        tdKnopBericht.appendChild(knopBericht);
         tr.appendChild(tdNickname);
         tr.appendChild(tdSterrenbeeld);
-        tr.appendChild(tdKnop);
+        tr.appendChild(tdKnopDetail);
+        tr.appendChild(tdKnopBericht);
         tabelBody.appendChild(tr);
     }
 
@@ -189,12 +195,18 @@ window.onload = function() {
         document.getElementById("zoek").style.display ="inline";
     }
 
-    function naarDetail() {
+    function naarDetailOfBericht() {
         const knoppen = document.querySelectorAll("#resultaten button"); 
         for (const knop of knoppen) {
             knop.onclick = function () {
                 sessionStorage.setItem("resultaatId", this.dataset.id);
-                window.open("zoekdetail.html");
+                let knopTekst = knop.innerText;
+                console.log(knopTekst);
+                if (knopTekst === "Bekijk profiel") {
+                    window.open("zoekdetail.html");
+                } else {
+                    window.open("chat.html");
+                }  
             }
         }
     }
