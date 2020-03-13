@@ -1,9 +1,9 @@
 "use strict";
 window.onload = function () {
-    let datum=new Date();
-    datum=new Date(datum.setFullYear(datum.getFullYear() - 18));
-    this.document.getElementById("geboorte").defaultValue=this.formatDate(datum);
-    
+    let datum = new Date();
+    datum = new Date(datum.setFullYear(datum.getFullYear() - 18));
+    this.document.getElementById("geboorte").defaultValue = this.formatDate(datum);
+
 }
 
 function formatDate(date) {
@@ -14,7 +14,7 @@ function formatDate(date) {
 }
 
 document.getElementById("toevoegen").onclick = function () {
-resetFoutboodschappen();
+    resetFoutboodschappen();
     const verkeerdeElementen = document.querySelectorAll("input:invalid");
     for (const element of verkeerdeElementen) {
         document.getElementById(`${element.name}Fout`).style.display = "inline";
@@ -24,7 +24,7 @@ resetFoutboodschappen();
         if (inputOK()) {
             voegProfielToe();
         }
-    }    
+    }
 
 };
 
@@ -36,32 +36,32 @@ function resetFoutboodschappen() {
 };
 
 function inputOK() {
-    let fouten=false;
+    let fouten = false;
     var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
-    const geboortedatum=new Date(document.getElementById("geboorte").value);
-    let datum=new Date();
-    datum=new Date(datum.setFullYear(datum.getFullYear() - 18));
-    if (geboortedatum>datum) {
+    const geboortedatum = new Date(document.getElementById("geboorte").value);
+    let datum = new Date();
+    datum = new Date(datum.setFullYear(datum.getFullYear() - 18));
+    if (geboortedatum > datum) {
         document.getElementById("onder18jaar").style.display = "block";
-        fouten=true;
+        fouten = true;
     }
-    const grootte=document.getElementById("grootte").value;
-    if (grootte<60||grootte>300) {
+    const grootte = document.getElementById("grootte").value;
+    if (grootte < 60 || grootte > 300) {
         document.getElementById("foutGrootte").style.display = "block";
-        fouten=true;
+        fouten = true;
     }
-    const gewicht=document.getElementById("gewicht").value;
-    if (gewicht<20||gewicht>400) {
+    const gewicht = document.getElementById("gewicht").value;
+    if (gewicht < 20 || gewicht > 400) {
         document.getElementById("foutGewicht").style.display = "block";
-        fouten=true;
+        fouten = true;
     }
     if (!document.getElementById("wachtwoord").value.match(passw)) {
         document.getElementById("wachtwoordPatroonOngeldig").style.display = "block";
-        fouten=true;
+        fouten = true;
     }
     if (document.getElementById("wachtwoord").value != document.getElementById("wachtwoordHerhaal").value) {
         document.getElementById("verschillendeWachtwoorden").style.display = "block";
-        fouten=true;
+        fouten = true;
     }
     return !fouten;
 }
@@ -83,7 +83,7 @@ async function voegProfielToe() {
     if (nicknameBestaatAl) {
         document.getElementById("reedsBestaandeNickname").style.display = "inline";
     } else {
-
+        
         let url = "https://scrumserver.tenobe.org/scrum/api/profiel/create.php";
         let data = {
             familienaam: document.getElementById("fnaam").value,
