@@ -78,3 +78,7 @@ document.getElementById("toevoegen").onclick= function () {
         .catch(function (error) { console.log(error); });
 
 };
+
+document.getElementById("bericht versturen").onclick=function () {
+    window.open("chat.html");
+}
