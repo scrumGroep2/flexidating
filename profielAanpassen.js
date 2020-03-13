@@ -87,6 +87,7 @@ window.onload = function () {
                 profielData.beroep = document.getElementById('detailBeroep').value;
                 profielData.email = document.getElementById('detailEmail').value;
                 profielData.gewicht = document.getElementById('detailGewicht').value;
+                profielData.foto = `${profielData.voornaam}${profielData.familienaam}.jpg`
         
                 var request = new Request(urlUpdate, {
                     method: 'PUT',
