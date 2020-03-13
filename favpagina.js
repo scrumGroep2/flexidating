@@ -14,12 +14,13 @@ fetch(url)
             fetch(persoon)
                 .then(function (resp) { return resp.json(); })
                 .then(function (data) {
-                    if (favorieten[i].statusCode !== 3) {
+                    if (favorieten[i].statusCode === "3") {
+                        // niet toevoegen;
+                    } else {
                         maakRij(data);
                         naarDetailOfBerichtSturen();
                         verwijderen();
-                    }
-                    
+                    }   
                 })
                 .catch(function (error) { console.log(error); });
 
