@@ -89,7 +89,7 @@ fetch(url)
                         let id = this.dataset.remove
                         console.log(id)
                         document.getElementById("tabelBody").deleteRow(this.dataset.row);
-                        let url = rooturl+'/favoriet/delete.php';
+                        let url = rooturl + '/favoriet/delete.php';
                         let data = {
                             id: id
                         }
@@ -139,3 +139,16 @@ fetch(url)
 
     .catch(function (error) { console.log(error); });
 
+document.getElementById("logout").onclick = function () {
+    sessionStorage.removeItem("id")
+    sessionStorage.removeItem("nickname")
+}
+
+let id = sessionStorage.getItem("id")
+if (id === null) {
+    window.location.replace("home.html")
+} else {
+    document.getElementById("geenLogin").innerText = ""
+    document.getElementById("verwijderen").disabled = false;
+    leesUser();
+}

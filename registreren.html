@@ -81,14 +81,18 @@
         Wachtwoord:
         <span id=wachtwoordFout class="fout">Verplicht</span>
         <input type="password" id="wachtwoord" name="wachtwoord" required>
-        <span>6 tot 20 characters met minstens 1 nummer, 1 hoofdletter en 1 kleine letter</span>
+        <span>6 tot 20 characters met minstens 1 cijfer, 1 hoofdletter en 1 kleine letter</span>
     </label><br>
     <label>
         Herhaal wachtwoord:
         <span id=wachtwoordHerhaalFout class="fout">Verplicht</span>
         <input type="password" id="wachtwoordHerhaal" name="wachtwoordHerhaal" required>
     </label><br>
-    
+    <form action="/action_page.php">
+        <label for="img">Select image:</label>
+        <input type="file" id="img" name="img" accept="image/*">
+        <input type="submit">
+      </form>
     <button id="toevoegen">Ik registreer mij</button>
     <p></p>    
     <div id="wachten">Even wachten aub.</div>

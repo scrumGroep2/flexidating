@@ -49,7 +49,7 @@ document.getElementById("toevoegen").onclick= function () {
 
 };
 
-// verwijder uit favorieten
+// verwijder uit favorieten (klaar in favpagina.js)
 document.getElementById('knop33').addEventListener('click', function (e) {  
     let id =  document.getElementById('input33_1').value; 
 
@@ -70,9 +70,38 @@ document.getElementById('knop33').addEventListener('click', function (e) {
         .then( function (resp)  { return resp.json(); })
         .then( function (data)  { console.log(data);  })
         .catch(function (error) { console.log(error); });
-
-
 });
+
+
+
+
+
+let naam =  document.getElementById('input40_1').value; 
+let afbeelding =  document.getElementById('input40_2').value; 
+
+let url=rooturl+'/image/upload.php';
+//LET OP : rooturl = https://scrumserver.tenobe.org/scrum/api
+let data = {
+    naam:naam,
+    afbeelding:afbeelding
+}
+
+var request = new Request(url, {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: new Headers({
+        'Content-Type': 'application/json'
+    })
+});
+
+fetch(request)
+    .then( function (resp)  { return resp.json(); })
+    .then( function (data)  { console.log(data);  })
+    .catch(function (error) { console.log(error); });
+
+
+
+
 
 document.getElementById("logout").onclick=function(){
     sessionStorage.removeItem("id")

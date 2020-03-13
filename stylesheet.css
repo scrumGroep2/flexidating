@@ -213,3 +213,21 @@ dl {
   vertical-align: bottom;
   margin-right: 10px;
 }
+
+.preview{
+  width: 255px;
+  min-height: 255px;
+  border: 2px solid #EB3B88;
+  margin-top: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: rgb(243, 144, 188);;
+}
+
+.imgPreview{
+  display: none;
+  width: 100%;
+}
