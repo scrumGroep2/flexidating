@@ -201,7 +201,7 @@ dl {
 
 .footer{
     position:fixed;
-    height:65px;
+    height:100px;
     bottom:0px;
     background-color: rgb(243, 144, 188);
     color: white;
