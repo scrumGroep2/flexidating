@@ -79,3 +79,7 @@ document.getElementById("toevoegen").onclick= function () {
         confirm("Favoriet toegevoegd!");
 
 };
+
+document.getElementById("bericht versturen").onclick=function () {
+    window.open("chat.html");
+}

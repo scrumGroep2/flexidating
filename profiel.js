@@ -1,4 +1,13 @@
 "use strict"
+window.onload = function() {
+    console.log("test")
+    console.log(!window.location.hash)
+    if(!window.location.hash) {
+        window.location = window.location + '#loaded';
+        window.location.reload();
+        console.log("het zou toch moeten werken")
+    }
+}
 let id = sessionStorage.getItem("id")
 console.log(id)
 if (id === null) {
@@ -9,6 +18,7 @@ if (id === null) {
     document.getElementById("verwijderen").disabled = false;
     leesUser();
 }
+
 async function leesUser() {
     fetch(`https://scrumserver.tenobe.org/scrum/api/profiel/read_one.php?id=${id}`)
         .then(function (resp) { return resp.json(); })
