@@ -44,7 +44,6 @@ function toonDetails(data) {
 }
 
 function sluit() {
-    console.log("hallo");
     const sluit = document.getElementById("sluit");
     sluit.onclick = function() {
         if (confirm("Profiel sluiten?")) {
@@ -76,5 +75,7 @@ document.getElementById("toevoegen").onclick= function () {
         .then( function (resp)  { return resp.json(); })
         .then( function (data)  { console.log(data);  })
         .catch(function (error) { console.log(error); });
+
+        confirm("Favoriet toegevoegd!");
 
 };

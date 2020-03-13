@@ -42,6 +42,7 @@ window.onload = function() {
         document.getElementById('zoek').disabled = true;
         let url = rooturl+= '/profiel/search.php?';
         url = grootteFilter(url);
+        url = gewichtFilter(url);
         url = nicknameFilter(url);
         url = geslachtFilter(url);
         url = geboortedatumFilter(url);
@@ -246,10 +247,10 @@ window.onload = function() {
 }
 
 function gewichtFilter(url) {
-    let minGrootte = document.getElementById('inputGewichtMin').value;
-    let maxGrootte = document.getElementById('inputGewichtMax').value;
-    if (minGrootte.trim().length > 0 && maxGrootte.trim().length > 0) {
-        url+='&grootteOperator=range&rangeMinGrootte='+ minGrootte + '&rangeMaxGrootte=' + maxGrootte + '&orderBy=grootte';
+    let minGewicht = document.getElementById('inputGewichtMin').value;
+    let maxGewicht = document.getElementById('inputGewichtMax').value;
+    if (minGewicht.trim().length > 0 && maxGewicht.trim().length > 0) {
+        url+='&gewichtOperator=range&rangeMinGewicht='+ minGewicht + '&rangeMaxGewicht=' + maxGewicht + '&orderBy=gewicht';
     }
     console.log(url)
     return url
