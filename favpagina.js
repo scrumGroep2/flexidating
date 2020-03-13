@@ -14,9 +14,12 @@ fetch(url)
             fetch(persoon)
                 .then(function (resp) { return resp.json(); })
                 .then(function (data) {
-                    maakRij(data);
-                    naarDetailOfBerichtSturen();
-                    verwijderen();
+                    if (favorieten[i].statusCode !== 3) {
+                        maakRij(data);
+                        naarDetailOfBerichtSturen();
+                        verwijderen();
+                    }
+                    
                 })
                 .catch(function (error) { console.log(error); });
 
@@ -42,6 +45,8 @@ fetch(url)
                 } else {
                     tdSterrenbeeld.innerText = "sterrenbeeld niet beschikbaar";
                 }
+                const tdStatus = document.createElement("td");
+                tdStatus.innerText = favorieten[i].status;
                 const tdVerwijder = document.createElement("td");
                 const link = document.createElement("a");
                 link.href = "#"
@@ -63,6 +68,7 @@ fetch(url)
                 tr.appendChild(tdSterrenbeeld);
                 tr.appendChild(tdKnop);
                 tr.appendChild(tdKnopBericht);
+                tr.appendChild(tdStatus);
                 tr.appendChild(tdVerwijder);
                 tabelBody.appendChild(tr);
 
@@ -122,7 +128,6 @@ fetch(url)
                         };
                 }
             }
-
         }
 
         const sterrenbeelden = [
