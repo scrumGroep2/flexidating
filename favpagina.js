@@ -165,8 +165,4 @@ document.getElementById("logout").onclick = function () {
 let id = sessionStorage.getItem("id")
 if (id === null) {
     window.location.replace("home.html")
-} else {
-    // document.getElementById("geenLogin").innerText = ""
-    document.getElementById("verwijderen").disabled = false;
-    leesUser();
-}
+} 
