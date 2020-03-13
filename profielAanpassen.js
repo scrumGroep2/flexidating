@@ -22,14 +22,14 @@ window.onload = function () {
         .then(function (data) {
 
             profielData = data;
- /*           let profielfoto
+            let profielfoto
 
             if (profielData.foto===null) {
                 profielfoto = "Nog geen foto toegevoegd"
             } else {
                 profielfoto = 'src', 'https://scrumserver.tenobe.org/scrum/img/' + profielData.foto
             }
-*/
+
             document.getElementById('detailNick').value = profielData.nickname;
             document.getElementById('detailFnaam').value = profielData.familienaam;
             document.getElementById('detailVnaam').value = profielData.voornaam;
@@ -55,16 +55,12 @@ window.onload = function () {
             document.getElementById("onder18jaar").style.display = "block";
             fouten=true;
         }
-        /*const grootte=document.getElementById("detailGrootte").value;
-        if (grootte<60||grootte>300) {
-            document.getElementById("foutGrootte").style.display = "block";
-            fouten=true;
-        }
-        const gewicht=document.getElementById("gewicht").value;
+        const gewicht=document.getElementById("detailGewicht").value;
         if (gewicht<20||gewicht>400) {
             document.getElementById("foutGewicht").style.display = "block";
             fouten=true;
-        }*/
+        }
+        
         return !fouten;
     }
 
